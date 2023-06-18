@@ -1,0 +1,285 @@
+// No spaces in event names, max length 32
+// All strings are case sensitive
+//
+// valid data key types are:
+//   string : a zero terminated string
+//   bool   : unsigned int, 1 bit
+//   byte   : unsigned int, 8 bit
+//   short  : signed int, 16 bit
+//   long   : signed int, 32 bit
+//   float  : float, 32 bit
+//   uint64 : unsigned int 64 bit
+//   local  : any data, but not networked to clients
+//
+// following key names are reserved:
+//   local      : if set to 1, event is not networked to clients
+//   unreliable : networked, but unreliable
+//   suppress   : never fire this event
+//   time	: firing server time
+//   eventid	: holds the event ID
+
+"CustomEvents"
+{
+	"GM_Operator"					////通知可操作，请求操作
+	{
+		"nPlayerID"	"short"
+		"typeOprt"	"short"
+		"nRequest"	"short"
+		////路径
+		"typePath"	"short"
+		"nPathID" 	"short"
+		////出狱
+		"nGold"		"short"
+		////交易
+		////nRequest = 0成功 1玩家正在交易 2正在拍卖流程
+		"nPlayerIDTrade"	"short"		////发起交易玩家ID
+		"nPlayerIDTradeBe"	"short"		////接收交易玩家ID
+		"json"				"string"
+		{
+			"发起玩家ID"
+			{
+				"nGold"		"short"
+				"arrPath"
+				{
+					"路径ID"
+					...
+				}
+			}
+			"被交易玩家ID"
+			{
+				"nGold"		"short"
+				"arrPath"
+				{
+					"路径ID"
+					...
+				}
+			}
+		}
+		////被交易
+		////nRequest = 0拒绝 1接受
+		//// 发起拍卖  TO_SendAuction--------------------------------------------
+		//// return TO_SendAuction 发起人 -> GM_OperatorFinished -> nRequest 1 0
+		"nPlayerID"	"short"
+		"nGold"		"short"  //// 起拍价
+		"nAddGold"	"short"		////每次最低加价
+		"json"					////id[]
+		{ }
+		//// 可以竞拍 TO_BidAuction-----------------------------------------------
+		"nPlayerID"		"short"		//// 当前操作者
+		"nSendPlayerID"	"short"		//// 发起人id
+		"nGold"			"short" 	//// 起拍价
+		"nAddGold"		"short"		////每次最低加价
+		"nTotalTime"		"short"		//// 竞拍倒计时总时间
+		"json"					////id[]
+		{ }
+		//// 客户端 TO_BidAuction
+		"nPlayerID"	"short"
+		"nGold"		"short"  ////玩家出价
+		////return GM_OperatorFinished TO_SendAuction -> nRequest 1 0
+		//// 竞拍结束 TO_FinishAuction
+		"nPlayerID"		"short"		//// 竞拍成功者
+		"nSendPlayerID"	"short"		//// 发起人id
+		"nGold"			"short" 	//// 最终价
+		"json"					////id[]
+		{ }
+		////使用卡牌		0:成功	1:失败
+		"nCardID"		"short"		////卡牌ID
+		"nTargetEntID"	"short"		////目标 entity index
+		"nPosX"			"short"		////目标 pos
+		"nPosY"			"short"		////目标 pos
+		"nPosZ"			"short"		////目标 pos
+
+		//// 选择随机卡牌 TO_RandomCard
+		"nPlayerID"
+		"typeOprt"
+		"typePath"
+		"nPathID"
+		"json"		"table" // card[]
+		// 客户端回包
+		"nPlayerID"
+		"typeOprt"
+		"nRequest"		// cardType
+		// 服务器回包
+		"nPlayerID"
+		"typeOprt"
+		"typePath"
+		"nPathID"
+		"json"		"table" // card[]
+		"nRequest"		// 0 数据错误 1 选择成功，关闭界面
+	}
+
+	"GM_OperatorFinished"			////通知操作结果
+	{
+		"nPlayerID"	"short"
+		"typeOprt"	"short"
+		"nRequest"	"short"
+		////roll点数据
+		"nNum1"		"short"
+		"nNum2"		"short"
+		////路径
+		"typePath"	"short"
+		"nPathID" 	"short"
+		////使用卡牌		0:成功	1:失败
+		"nCardID"		"short"		////卡牌ID
+		"typeCard"		"short"		////卡牌类型
+		"nManaCost"		"short"		////卡牌耗蓝
+		"nTargetEntID"	"short"		////目标 entity index
+		"nPosX"			"short"		////目标 pos
+		"nPosY"			"short"		////目标 pos
+		"nPosZ"			"short"		////目标 pos
+		////补给轮抽
+		"nRequest"	"short"		////要选择的补给品是第几个
+	}
+	"GM_CardAdd"		////通知卡牌添加
+	{
+		"nPlayerID"		"short"
+		"json"			////卡牌消息
+		{
+			{
+				"nCardID"		"short"		////卡牌ID
+				"typeCard"		"short"		////卡牌类型
+				"typeCast"	    "short"		////卡牌施法类型
+				"nManaCost"		"short"		////卡牌耗蓝
+			}
+			{
+				"nCardID"		"short"		////卡牌ID
+				"typeCard"		"short"		////卡牌类型
+				"typeCardCast"	"short"		////卡牌施法类型
+				"nManaCost"		"short"		////卡牌耗蓝
+			}
+			...	////多张
+		}
+	}
+	"GM_CardUpdata"		////通知卡牌更新
+	{
+		"nPlayerID"		"short"
+		"json"			////卡牌消息
+		{
+			{
+				"nCardID"		"short"		////卡牌ID
+				"typeCard"		"short"		////卡牌类型
+				"typeCast"	    "short"		////卡牌施法类型
+				"nManaCost"		"short"		////卡牌耗蓝
+			}
+			{
+				"nCardID"		"short"		////卡牌ID
+				"typeCard"		"short"		////卡牌类型
+				"typeCardCast"	"short"		////卡牌施法类型
+				"nManaCost"		"short"		////卡牌耗蓝
+			}
+			...	////多张
+		}
+	}
+    "GM_CardInfo"
+	{
+		"tabCardInfo"      {}
+	}
+	"Svc_PayRequest"	////支付请求
+	{
+		"nPay"			"short"		////支付金额
+		"typeItem"		"short"		////商品类型	1=鸡
+		"typePay"		"short"		////支付类型	1=微信	2=支付宝
+		"url"			"string"	////支付二维码链接
+		"result"		"short"		////0=请求成功
+	}
+	"Svc_PayFinished"	////支付完成
+	{
+		"nPlayerID"		"short"
+		"result"		"short"		////支付结果	1=支付成功	2=订单取消
+	}
+	"Svc_PayClose"		////取消支付
+	{
+	}
+	"Svc_RandomSkin"	////请求抽奖
+	{
+		"result"		"short"		////结果	0=成功
+	}
+	"Svc_RandomSkinResult"	////抽奖结果
+	{
+		"result"		"short"		////结果	0=成功
+		"skin_id"		"string"	//皮肤ID
+	}
+	"Svc_UseSkin"		////请求使用皮肤
+	{
+		"result"		"short"		////结果	0=成功
+		"skin_id"		"string"	////皮肤ID
+		"request"		"short"		////请求	1=卸下
+	}
+	"show_cursor_hero_icon"
+	{
+		"unit"		"string"
+	}
+	"play_chess_dialogue"
+	{
+		"unit_name"			"string"
+		"dialogue_type"		"short"
+	}
+	"show_draw_card"
+	{
+		"cards"		"string"
+	}
+	"close_draw_card"
+	{
+	}
+	"show_is_hand_full"
+	{
+		"is_hand_full"	"bool"
+	}
+
+	"send_http_cb"
+	{
+		"event"		"string"
+		"data"		"data"
+	}
+	"bullet"
+	{
+		"player_id"	"short"
+		"text"		"string"
+		"win"		"string"
+		"draw"		"string"
+		"lose"		"string"
+		"target"	"string"
+	}
+	"sync_hp"
+	{
+		"player_id"	"short"
+		"hp"		"short"
+		"hp_max"	"short"
+	}
+	"population"
+	{
+		"max_count"	"short"
+		"count"		"short"
+	}
+	"battle_info"
+	{
+		"type"		"string"
+		"text"		"string"
+		"round"		"short"
+		"host_oppo_id"		"short"
+		"guest_oppo_id"		"short"
+	}
+	"player_reconnect"
+	{
+		"id" 		"short"
+	}
+	"show_liuju"
+	{
+	}
+	"hide_liuju"
+	{
+	}
+	"update_liuju"
+	{
+		"count"		"short"
+		"total"		"short"
+	}
+	"SelectHero"
+	{
+		"nPlayerID"	"short"
+		"sHeroName" "string"
+		"SelectHeroSuccessOrFailure" "number"
+		"bprimary"	"number"
+	}
+}
+

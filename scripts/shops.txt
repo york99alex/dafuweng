@@ -1,0 +1,129 @@
+"dota_shops"
+{
+	"consumables"	//消耗品
+	{
+	}
+
+	"attributes"	//属性装备
+	{
+		"item"		"item_ogre_axe"					//食人魔之斧
+		"item"		"item_blade_of_alacrity"		//欢欣之刃
+		"item"		"item_staff_of_wizardry"		//魔力法杖
+		"item"		"item_reaver"				//掠夺者之斧
+		"item"		"item_eagle"				//鹿角弓
+		"item"		"item_mystic_staff"			//神秘法杖
+	}
+
+	"weapons_armor"		//武器盔甲
+	{
+		"item"		"item_stout_shield"			//圆盾
+		"item"		"item_blight_stone"			//枯萎之石
+		"item"		"item_gloves"				//加速手套
+		"item"		"item_mithril_hammer"		//秘银锤
+		"item"		"item_oblivion_staff_bg"		//空明杖
+		"item"		"item_chainmail"			//锁子甲
+		"item"		"item_cloak"				//抗魔斗篷
+		"item"		"item_lesser_crit_bg"			//水晶剑
+		"item"		"item_veil_of_discord_bg"	//纷争面纱
+		"item"		"item_hood_of_defiance_bg"		//挑战头巾
+		"item"		"item_power_treads_bg"		//动力鞋
+		"item"		"item_phase_boots_bg"			//相位鞋
+		"item"		"item_arcane_boots_bg"			//秘法鞋
+	}
+
+	"misc"			//其他
+	{
+		"item"		"item_iron_talon_bg"		//钢爪
+		"item"		"item_ring_of_health"		//治疗指环
+		"item"		"item_void_stone"			//虚无宝石
+		"item"		"item_lifesteal"			//吸血面具
+		"item"		"item_point_booster"		//精气之球
+		"item"		"item_ultimate_orb"			//极限法球
+
+		"item"		"item_blink"	//闪烁匕首
+
+		
+	}
+
+	// Level 1 - Green Recipes
+	// common  1级常见物品 基础配件
+	"basics"
+	{
+
+		"item"		"item_vanguard"				//先锋盾
+		"item"		"item_pers"						//坚韧球
+	}
+
+	// Level 2 - Blue Recipes
+	// rare		2级稀有物品		辅助物品
+	"support"
+	{
+	}
+
+	//	魔法装备	法器
+	"magics"
+	{
+		"item"		"item_orchid"				//紫苑
+		"item"		"item_nullifier"			//否决
+		"item"		"item_refresher"			//刷新球
+		"item"		"item_octarine_core"		//玲珑心
+	}
+
+	//未完成
+	// Level 3 - Purple Recipes
+	// epic	防御	3级史诗		防具
+	"defense"
+	{
+		"item"		"item_blade_mail"			//刃甲
+		"item"		"item_crimson_guard"			//赤红甲
+		"item"		"item_pipe_lua"	//洞察烟斗
+
+		"item"		"item_black_king_bar"		//bkb
+		"item"		"item_assault"				//强袭胸甲
+	}
+
+	// 武器		兵刃
+	"weapons"
+	{
+ 		"item"		"item_desolator"				//黯灭
+		"item"		"item_rapier"				//圣剑
+	}
+
+	// Level 4 - Orange / Orb / Artifacts
+	// artifact		4级神器
+	"artifacts"
+	{
+		"item"		"item_greater_crit"			//大炮
+		"item"		"item_butterfly"			//蝴蝶
+		"item"		"item_monkey_king_bar" 		//金箍棒
+		"item"		"item_moon_shard"				//银月
+
+ 		"item"		"item_kaya"					//慧光
+ 		"item"		"item_satanic"				//撒旦
+	}
+
+	// 路边1
+	"sideshop1"
+	{
+	}
+
+	// 路边2
+	"sideshop2"
+	{		
+	}
+
+	// 神秘商店
+	// secret_shop 		青蓝色
+	"secretshop"
+	{
+		"item"		"item_platemail"			//板甲
+		"item"		"item_talisman_of_evasion"	//闪避护符
+		"item"		"item_hyperstone"			//振奋宝石
+		"item"		"item_demon_edge"			//恶魔刀锋
+		"item"		"item_relic"				//神圣遗物
+	}
+
+	"pregame"
+	{
+	}
+}

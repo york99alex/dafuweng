@@ -1,0 +1,274 @@
+"cardlist"
+{
+    //小型狩猎场
+    "Card_MONSTER_small_hunting_ground"
+    {
+        "ShopItemName"       "iron_talon_bg"
+        "CardType"            "10005"
+        "ManaCost"        "1"
+        "CastType"        "1"
+        "CardKind"            "1"
+
+    }
+    //大型狩猎场
+    "Card_MONSTER_large_hunting_ground"
+    {
+        "ShopItemName"       "iron_talon_bg"
+        "CardType"            "10006"
+        "ManaCost"        "2"
+        "CastType"        "1"
+        "CardKind"            "1"
+
+    }
+    //远古禁地
+    "Card_MONSTER_ancient_forbidden_land"
+    {
+        "ShopItemName"       "iron_talon_bg"
+        "CardType"            "10007"
+        "ManaCost"        "3"
+        "CastType"        "1"
+        "CardKind"            "1"
+
+    }
+    //拉野
+    "Card_MONSTER_brush_field"
+    {
+        "ShopItemName"       "iron_talon_bg"
+        "CardType"            "10008"
+        "ManaCost"        "2"
+        "CastType"        "2"
+        "CardKind"            "1"
+
+    }
+    //奥术鞋
+    "Card_ITEM_arcane_boots"
+    {
+        "ShopItemName"       "arcane_boots"
+        "CardType"            "1"
+        "ManaCost"        "2"
+        "CastType"        "1"
+        "CardKind"            "1"
+
+    }
+    //刷新球
+    "Card_ITEM_refresher"
+    {
+        "ShopItemName"       "refresher"
+        "CardType"            "2"
+        "ManaCost"        "3"
+        "CastType"        "1"
+        "CardKind"            "1"
+
+    }
+    //紫苑
+    "Card_ITEM_orchid"
+    {
+        "ShopItemName"       "orchid"
+        "CardType"            "3"
+        "ManaCost"        "3"
+        "CastType"        "4"
+        "CardKind"            "1"
+
+    }
+    //否决
+    "Card_ITEM_nullifier"
+    {
+        "ShopItemName"       "nullifier"
+        "CardType"            "4"
+        "ManaCost"        "3"
+        "CastType"        "4"
+        "CardKind"            "1"
+
+    }
+    //闪烁匕首
+    "Card_ITEM_blink"
+    {
+        "ShopItemName"       "blink"
+        "CardType"            "5"
+        "ManaCost"        "3"
+        "CastType"        "6"
+        "CardKind"            "1"
+
+    }
+    //赤红甲
+    "Card_ITEM_crimson_guard"
+    {
+        "ShopItemName"       "crimson_guard"
+        "CardType"            "6"
+        "ManaCost"        "1"
+        "CastType"        "1"
+        "CardKind"            "1"
+
+    }
+    //刃甲
+    "Card_ITEM_blade_mail"
+    {
+        "ShopItemName"       "blade_mail"
+        "CardType"            "7"
+        "ManaCost"        "3"
+        "CastType"        "1"
+        "CardKind"            "1"
+    }
+    //bkb 黑皇杖
+    "Card_ITEM_black_king_bar"
+    {
+        "ShopItemName"       "black_king_bar"
+        "CardType"            "8"
+        "ManaCost"        "2"
+        "CastType"        "1"
+        "CardKind"            "1"
+    }
+    //传送tp
+    "Card_MAGIC_TP"
+    {
+        "CardType"          "20000"
+        "ManaCost"          "1"
+        "CastType"          "6"
+        "CardKind"          "2"
+        "IsSupply"          "1"
+    }
+    //阎刃
+    "Card_MAGIC_InfernalBlade"
+    {
+        "CardType"          "20005"
+        "ManaCost"          "1"
+        "CastType"          "4"
+        "CardKind"          "2"
+        "IsSupply"          "1"
+    }
+    //窃取
+    "Card_MAGIC_Card_Steal"
+    {
+        "CardType"          "20001"
+        "ManaCost"          "3"
+        "CastType"          "4"
+        "CardKind"          "2"
+        "IsSupply"          "1"
+    }
+    //移形换位
+    "Card_MAGIC_Swap"
+    {
+        "CardType"          "20002"
+        "ManaCost"          "3"
+        "CastType"          "4"
+        "CardKind"          "2"
+        "IsSupply"          "1"
+    }
+    //两级反转
+    "Card_MAGIC_ReversePolarity"
+    {
+        "CardType"          "20003"
+        "ManaCost"          "5"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "1"
+    }
+    // //恶念瞥视
+    "Card_MAGIC_Glimpse"
+    {
+        "CardType"          "20004"
+        "ManaCost"          "2"
+        "CastType"          "4"
+        "CardKind"          "2"
+        "IsSupply"          "1"
+    }
+    // //魔瓶
+    "Card_MAGIC_Bottle"
+    {
+        "CardType"          "20006"
+        "ManaCost"          "1"
+        "CastType"          "4"
+        "CardKind"          "2"
+        "IsSupply"          "1"
+    }
+    //魔瓶（双倍神符）
+    "Card_MAGIC_BottleDouble"
+    {
+        "CardType"          "20007"
+        "ManaCost"          "1"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //魔瓶（极速神符）
+    "Card_MAGIC_BottleHaste"
+    {
+        "CardType"          "20008"
+        "ManaCost"          "1"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //魔瓶（幻象神符）
+    "Card_MAGIC_BottleIllusion"
+    {
+        "CardType"          "20009"
+        "ManaCost"          "1"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //魔瓶（隐身神符）
+    "Card_MAGIC_BottleInvisibility"
+    {
+        "CardType"          "20010"
+        "ManaCost"          "1"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //魔瓶（回复神符）
+    "Card_MAGIC_BottleRegeneration"
+    {
+        "CardType"          "20011"
+        "ManaCost"          "1"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //魔瓶（赏金神符）
+    "Card_MAGIC_BottleBounty"
+    {
+        "CardType"          "20012"
+        "ManaCost"          "1"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //魔瓶（奥术神符）
+    "Card_MAGIC_BottleArcane"
+    {
+        "CardType"          "20013"
+        "ManaCost"          "1"
+        "CastType"          "1"
+        "CardKind"          "2"
+        "IsSupply"          "0"
+    }
+    //血怒
+    "Card_BUFF_Bloodrage"
+    {
+        "CardType"          "30000"
+        "ManaCost"          "2"
+        "CastType"          "4"
+        "CardKind"          "3"
+        "IsSupply"          "1"
+    }
+    //瞄准
+    "Card_BUFF_TakeAim"
+    {
+        "CardType"          "30001"
+        "ManaCost"          "2"
+        "CastType"          "4"
+        "CardKind"          "3"
+        "IsSupply"          "1"
+    }
+    //神灭斩
+    // "Card_HERO_LINA_laguna_blade"
+    // {
+    //     "ShopItemName"       "black_king_bar"
+    //     "CardType"            "10000"
+    //     "ManaCost"        "10"
+    //     "CastType"        "4"
+    // }
+
+}

@@ -1,0 +1,5297 @@
+"DOTAAbilities"
+{
+	//攻击之爪
+	"item_blades_of_attack"
+	{
+		"ID"							"2"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ItemCost"						"215"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"9"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// 食人魔之斧
+	//=================================================================================================================
+	"item_ogre_axe"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"21"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"500"
+		"ItemShopTags"					"str"
+		"ItemQuality"					"component"
+		"ItemAliases"					"ogre club"
+
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"10"
+			}
+		}
+	}
+	//=================================================================================================================
+	// 欢欣之刃
+	//=================================================================================================================
+	"item_blade_of_alacrity"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"22"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"500"
+		"ItemShopTags"					"agi"
+		"ItemQuality"					"component"
+		"ItemAliases"					"blade of alacrity"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"10"
+			}
+		}
+	}
+	//=================================================================================================================
+	// 魔力法杖
+	//=================================================================================================================
+	"item_staff_of_wizardry"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"23"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"    			     	"item_datadriven"
+		"AbilityTextureName"			"item_staff_of_wizardry"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"500"
+		"ItemShopTags"					"int"
+		"ItemQuality"					"component"
+
+		// Modifiers
+		//-------------------------------------------------------------------------------------------------------------
+		"Modifiers"
+		{
+			"modifier_item_staff_of_wizardry"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"%spell_amp"
+				}
+			}
+		}
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect123"		"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spell_amp"				"10"
+			}
+		}
+	}
+	//=================================================================================================================
+	// 精气之球
+	//=================================================================================================================
+	"item_point_booster"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"60"
+		"BaseClass"         			"item_datadriven"
+        "AbilityTextureName"			"item_point_booster"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1000"
+		"ItemShopTags"					"mana_pool;health_pool"
+		"ItemQuality"					"secret_shop"
+		"ItemAliases"					"point booster"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"2"		//补给
+
+		// Modifiers
+		//-------------------------------------------------------------------------------------------------------------
+		"Modifiers"
+		{
+			"modifier_item_energy_booster"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxMana"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxHP"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxMana"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxHP"
+					}
+				}
+			}
+		}
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"1"
+			}
+
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"250"
+			}
+		}
+	}
+	// "item_recipe_point_booster"
+	// {
+	// 	// General
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ID"							"10060"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	// 	"Model"							"models/props_gameplay/recipe.vmdl"
+	// 	"BaseClass"						"item_recipe_arcane_boots"
+	// 	"AbilityTextureName"			"item_recipe_point_booster"
+
+	// 	// Item Info
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ItemCost"						"0"	
+	// 	"ItemShopTags"					""
+	// 	"SecretShop"					"0"		//神秘商店
+	// 	"SideShop"						"1"		//边路商店
+	// 	"GlobalShop"					"0"		//全部商店
+		
+	// 	// Recipe
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ItemRecipe"					"1"
+	// 	"ItemResult"					"item_point_booster"
+	// 	"ItemRequirements"
+	// 	{
+	// 		"01"						""
+	// 		// "01"						"item_energy_booster;item_vitality_booster"
+	// 	}
+	// }
+
+	//极限法球 
+	"item_ultimate_orb"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"24"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"         			"item_datadriven"
+        "AbilityTextureName"			"item_ultimate_orb"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1500"
+		// "ItemShopTags"					"agi;int;str"
+		// "ItemQuality"					"secret_shop"
+		// "ItemAliases"					"ultimate orb"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"3"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_ultimate_orb"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_agility"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"%spell_amp"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_attributes"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_attributes"
+					}
+				}
+			}
+		}
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_all_stats1"		"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"10"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spell_amp"				"10"
+			}
+		}
+	}
+	// "item_recipe_ultimate_orb"
+	// {
+	// 	// General
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ID"							"10024"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	// 	"Model"							"models/props_gameplay/recipe.vmdl"
+	// 	"BaseClass"						"item_recipe_arcane_boots"
+	// 	"AbilityTextureName"			"item_recipe_ultimate_orb"
+
+	// 	// Item Info
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ItemCost"						"0"	
+	// 	"ItemShopTags"					""
+	// 	"SecretShop"					"0"		//神秘商店
+	// 	"SideShop"						"1"		//边路商店
+	// 	"GlobalShop"					"0"		//全部商店
+	// 	// Recipe
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ItemRecipe"					"1"
+	// 	"ItemResult"					"item_ultimate_orb"
+	// 	"ItemRequirements"
+	// 	{
+	// 		"01"						""
+	// 		"01"						"item_ogre_axe;item_blade_of_alacrity;item_staff_of_wizardry"
+	// 	}
+	// }
+
+	//圆盾
+	"item_stout_shield"
+	{
+		"ID"							"182"
+		"ItemCost"						"250"
+        "ItemDroppable"                 "1"
+		"IsObsolete"					"0"
+		"ItemPurchasable"				"1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"1"		//补给
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_block_melee"	"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_block_ranged"	"10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_chance"			"50"
+			}
+		}
+	}
+	//枯萎之石
+	"item_blight_stone"
+	{
+		"ID"							"240"
+		"ItemCost"						"500"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"1"		//补给
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"corruption_armor"		"-4"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"corruption_duration"	"0.1"
+			}
+		}
+	}
+	//淬毒之珠
+	"item_orb_of_venom"
+	{
+		"ID"							"181"
+		"ItemCost"						"250"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"poison_damage_melee"	"5.0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"poison_damage_range"			"3.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"poison_movement_speed_melee"		"-12"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"poison_movement_speed_range"		"-4"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"poison_duration"		"3.0"
+			}
+		}
+	}
+	//风灵之纹
+	"item_wind_lace"
+	{
+		"ID"							"244"
+		"ItemCost"						"250"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movement_speed"			"20"
+			}
+		}
+	}
+	//贤者的面具
+	"item_sobi_mask"
+	{
+		"ID"							"325"
+		"BaseClass"         	"item_datadriven"
+        "AbilityTextureName"	"item_sobi_mask"
+		"ItemCost"						"250"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"Modifiers"
+		{
+			"modifier_item_sobi_mask"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mana_regen1"		"0.75"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero"		"1"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero_round"		"3"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_bz"		"10"
+			}
+		}
+	}
+	//恢复戒指
+	"item_ring_of_regen"
+	{
+		"ID"							"27"
+		"BaseClass"         			"item_datadriven"
+		"AbilityTextureName"			"item_ring_of_regen"
+		"ItemCost"						"250"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"Modifiers"
+		{
+			"modifier_item_ring_of_regen"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiXue"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiXue"
+					}
+				}
+			}
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_health_regen1"	"2"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_health_regen_hero_round"					"1"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen_hero"		"50"
+			}
+		}
+	}
+	//加速手套
+	"item_gloves"
+	{
+		"ID"							"25"
+		"ItemCost"						"500"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"1"		//补给
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"20"
+			}
+		}
+	}
+	//铁意头盔
+	"item_helm_of_iron_will"
+	{
+		"ID"							"6"
+		"BaseClass"         			"item_datadriven"
+		"AbilityTextureName"			"item_helm_of_iron_will"
+		"ItemCost"						"500"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"Modifiers"
+		{
+			"modifier_item_helm_of_iron_will"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiXue"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiXue"
+					}
+				}
+			}
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_regen1"			"3.5"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen_hero_round"	"1"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_health_regen_hero"	"70"
+			}
+		}
+	}
+    //锁子甲
+    "item_chainmail"
+	{
+		"ID"							"4"
+		"ItemCost"						"250"
+        "ItemShareability"              "ITEM_FULLY_SHAREABLE"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"1"		//补给
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"5"
+			}
+		}
+	}
+    //短棍
+    "item_quarterstaff"
+	{
+		"ID"							"10"
+        "ItemCost"						"500"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_speed"			"10"
+			}
+		}
+	}
+    //标枪
+    "item_javelin"
+	{
+		"ID"							"7"
+		"ItemCost"						"900"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+        // Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"21"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_chance"			"20"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_chance_damage"	"40"
+			}
+		}
+	}
+    //长剑
+    "item_broadsword"
+	{
+		"ID"							"3"
+		"ItemCost"						"600"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		// "IsSupply"						"1"		//补给
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"18"
+			}
+		}
+	}
+    //大剑
+    "item_claymore"
+	{
+		"ID"							"5"
+		"ItemCost"						"700"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"21"
+			}
+		}
+	}
+    //秘银锤
+    "item_mithril_hammer"
+	{
+		"ID"							"8"
+		"ItemCost"						"500"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"1"		//补给
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"20"
+			}
+		}
+	}
+    //抗魔斗篷
+    "item_cloak"
+	{
+		"ID"							"31"
+		"ItemCost"						"250"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"1"		//补给
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_magical_armor"	"15"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_resist1"	"15"
+			}
+		}
+	}
+    //治疗指环
+    "item_ring_of_health"
+	{
+		"ID"							"56"
+		"BaseClass"         			"item_datadriven"
+		"AbilityTextureName"			"item_ring_of_health"
+		"ItemCost"						"500"
+        "ItemDropparble"                 "0"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"1"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_ring_of_health"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiXue"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiXue"
+					}
+				}
+			}
+		}
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health_regen123"	"5"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen_hero_round"	"1"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_health_regen_hero"	"100"
+			}
+		}
+	}
+    //虚无宝石
+    "item_void_stone"
+	{
+		"ID"							"57"
+        "BaseClass"         	"item_datadriven"
+        "AbilityTextureName"	"item_void_stone"
+		"ItemCost"						"750"
+        "ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"1"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_void_stone"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+				}
+				// "OnDestroy"	{}
+			}
+		}
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mana_regen1"		"0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_bz"		"40"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero"		"1"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero_round"		"1"
+			}
+		}
+	}
+	//能量之球
+	"item_energy_booster"
+	{
+		"ID"							"59"
+		"BaseClass"         	"item_datadriven"
+        "AbilityTextureName"	"item_energy_booster"
+		"ItemCost"				"500"
+        "ItemDroppable"         "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"Modifiers"
+		{
+			"modifier_item_energy_booster"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxMana"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxMana"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"1"
+			}
+		}
+	}
+	//活力之球
+	"item_vitality_booster"
+	{
+		"ID"							"61"
+		"ItemCost"						"500"
+		"ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"250"
+			}
+		}
+	}
+	//真视宝石
+	"item_gem"
+	{
+		"ID"							"30"
+		"ItemCost"						"1000"
+		"ItemDroppable"                 "1"
+		"ItemStockMax"					"0"
+		"ItemSellable"					"1"
+		"AllowedInBackpack"				"1"
+		"AbilityCastRange"				"300"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"300"
+			}
+		}
+	}
+	//吸血面具
+	"item_lifesteal"
+	{
+		"BaseClass"         	"item_datadriven"
+        "AbilityTextureName"	"item_lifesteal"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"							"26"
+		"ItemCost"						"1000"
+		"ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"2"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_lifesteal"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"OnCreated"
+				{
+					"ApplyModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_xixue"
+					}
+				}
+				"OnDestroy"
+				{
+					"RemoveModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_xixue"
+					}
+				}
+			}
+		}
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lifesteal_percent"		"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lifesteal_ablt_percent"		"10"
+			}
+		}
+	}
+
+	//撒旦之邪力
+	"item_recipe_satanic"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"155"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_satanic"
+		"ItemRequirements"
+		{
+			"01"						"item_lifesteal;item_reaver"
+			// "01"						"item_lifesteal;item_claymore;item_reaver"
+		}
+	}
+	"item_satanic"
+	{
+		"BaseClass"         			"item_datadriven"
+        "AbilityTextureName"			"item_satanic"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"							"156"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		// "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"FightRecapLevel"				"2"
+		// "SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+
+		// Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"35"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"2000"
+		"ItemShopTags"					"damage;str;armor;unique;hard_to_tag"
+		"ItemQuality"					"artifact"
+		"ItemAliases"					"satanic"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ShouldBeSuggested"				"1"
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		// "IsSupply"						"4"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_satanic"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+				}
+				"OnCreated"
+				{
+					"ApplyModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_xixue"
+					}
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/items/item_satanic.lua"
+						"Function"			"onItem_satanic"
+					}
+				}
+				"OnDestroy"
+				{
+					"RemoveModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_xixue"
+					}
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/items/item_satanic.lua"
+						"Function"			"onItem_satanic"
+					}
+				}
+			}
+		}
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage1"			"25"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lifesteal_percent"		"20"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"unholy_lifesteal_percent"	"180"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"unholy_lifesteal_total_tooltip"	"200"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"unholy_duration"		"5.0"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"status_resistance1"			"30"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lifesteal_ablt_percent"		"20"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"unholy_target"			"30"
+			}
+		}
+	}
+	//暗影护符
+	"item_shadow_amulet_lua"
+	{
+		"BaseClass"         	"item_lua"
+		"ScriptFile"			"Ability\items\item_shadow_amulet_lua"
+        "AbilityTextureName"	"item_shadow_amulet"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"    	"DOTA_UNIT_TARGET_ALL"
+		"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NONE"
+
+		"ID"							"215"
+		"FightRecapLevel"				"1"
+		"ItemCost"						"1200"
+		"ItemDroppable"                 "1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+
+		"AbilityCooldown"				"2"
+		"AbilityManaCost"				"2"
+
+		"Modifiers"
+		{
+			"modifier_item_shadow_amulet_lua"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
+				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"fade_time1"				"1.25"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_range1"			"600"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"round"					"1"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_cost"				"2"
+			}
+		}
+	}
+	//板甲
+	"item_platemail"
+	{
+		"ID"							"9"
+		"ItemCost"						"1000"
+		"ItemDroppable"                 "1"
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"3"		//补给
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"10"
+			}
+		}
+	}
+	//闪避护符
+	"item_talisman_of_evasion"
+	{
+		"ID"							"32"
+		"ItemCost"						"1000"
+		"ItemDroppable"                 "1"
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"3"		//补给
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_evasion"			"15"
+			}
+		}
+	}
+	//振奋宝石
+	"item_hyperstone"
+	{
+		"ID"							"55"
+		"ItemCost"						"1500"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"3"		//补给
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"55"
+			}
+		}
+	}
+	//恶魔刀锋
+	"item_demon_edge"
+	{
+		"ID"							"51"
+		"ItemCost"						"1500"
+		"ItemDroppable"                 "1"
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"3"		//补给
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"40"
+			}
+		}
+	}
+	//掠夺者之斧
+	"item_reaver"
+	{
+		"ID"							"53"
+		"ItemCost"						"1500"
+		"ItemDroppable"                 "1"
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"3"		//补给
+
+		"BaseClass"         	"item_datadriven"
+        "AbilityTextureName"	"item_reaver"
+
+		"Modifiers"
+		{
+			"modifier_item_reaver"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+					// "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_agility"
+					// "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%spell_amp"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_attributes"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_attributes"
+					}
+				}
+			}
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"25"
+			}
+		}
+	}
+	//鹿角弓
+	"item_eagle"
+	{
+		"ID"							"52"
+		"ItemCost"						"1500"
+		"ItemDroppable"                 "1"
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"3"		//补给
+
+        "BaseClass"         	"item_datadriven"
+        "AbilityTextureName"	"item_eagle"
+
+		"Modifiers"
+		{
+			"modifier_item_eagle"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					// "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_agility"
+					// "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%spell_amp"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_attributes"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_attributes"
+					}
+				}
+			}
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"25"
+			}
+		}
+	}
+	//神秘法杖
+	"item_mystic_staff"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"58"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"    			     	"item_datadriven"
+		"AbilityTextureName"			"item_mystic_staff"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1500"
+		"ItemShopTags"					"int"
+		"ItemQuality"					"secret_shop"
+		"ItemAliases"					"mystic staff"
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"3"		//补给
+
+
+		// Modifiers
+		//-------------------------------------------------------------------------------------------------------------
+		"Modifiers"
+		{
+			"modifier_item_mystic_staff"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"%spell_amp"
+				}
+			}
+		}
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect1"		"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spell_amp"				"25"
+			}
+		}
+	}
+	//神圣遗物
+	"item_relic"
+	{
+		"ID"							"54"
+		"ItemCost"						"2000"
+		"ItemDroppable"                 "1"
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"3"		//补给
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"60"
+			}
+		}
+	}
+	//空明杖
+	"item_oblivion_staff_bg"
+	{
+		"ID"							"6700"
+		"BaseClass"         	"item_datadriven"
+        "AbilityTextureName"	"item_oblivion_staff"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemCost"						"1500"
+        "ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"2"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_oblivion_staff_bg"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					// "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
+					// "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"%spell_amp"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect1"		"0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed1"	"10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage1"			"10"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mana_regen1"		"0"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spell_amp"				"10"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_bz"	"20"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero"	"1"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero_round"	"2"
+			}
+		}
+	}
+	"item_recipe_oblivion_staff"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"66"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_oblivion_staff"
+		"ItemRequirements"
+		{
+			"01"						""
+			// "01"						"item_quarterstaff;item_sobi_mask;item_staff_of_wizardry"
+		}
+	}
+
+	//水晶剑
+	"item_lesser_crit_bg"
+	{
+		"BaseClass"         	"item_datadriven"
+        "AbilityTextureName"	"item_lesser_crit"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"							"14900"
+		"ItemCost"						"1500"
+        "ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"2"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_lesser_crit_bg"
+			{
+				"Passive"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+				}
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"OnAttackStart"
+				{
+					"Random"
+					{
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_shuijingjian_crit"
+							}
+						}
+						"Chance"	"15"
+						"PseudoRandom"	"1"
+					}
+				}
+			}
+			"modifier_item_shuijingjian_crit"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%crit_multiplier"
+				}
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_item_shuijingjian_crit"
+					}
+				}
+				"IsHidden"	"1"
+			}
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"30"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_chance"			"15"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_multiplier"		"150"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_crit_damage"	"75"
+			}
+		}
+	}
+	// "item_recipe_lesser_crit"
+	// {
+	// 	// General
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ID"							"148"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	// 	"Model"							"models/props_gameplay/recipe.vmdl"
+		
+	// 	// Item Info
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ItemCost"						"0"	
+	// 	"ItemShopTags"					""
+		
+	// 	// Recipe
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ItemRecipe"					"1"
+	// 	"ItemResult"					"item_lesser_crit"
+	// 	"ItemRequirements"
+	// 	{
+	// 		"01"						""
+	// 		// "01"						"item_broadsword;item_blades_of_attack"
+	// 	}
+	// }
+
+	//金箍棒
+	"item_monkey_king_bar"
+	{
+		"ID"							"135"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ItemCost"						"0"
+        "ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"5"		//补给
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"40"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"50"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_chance"			"75"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_chance_damage"			"100"
+			}
+		}
+	}
+	"item_recipe_monkey_king_bar"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"134"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_monkey_king_bar"
+		"ItemRequirements"
+		{
+			"01"						"item_demon_edge;item_hyperstone"
+		}
+	}
+
+	//蝴蝶
+	"item_butterfly"
+	{
+		"ID"							"139"
+		"ItemCost"						"0"
+        "ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"5"		//补给
+		
+		"BaseClass"         	"item_datadriven"
+        "AbilityTextureName"	"item_butterfly"
+
+		"Modifiers"
+		{
+			"modifier_item_butterfly"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					// "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_agility"
+					// "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%spell_amp"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_attributes"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_attributes"
+					}
+				}
+			}
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"35"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"25"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_evasion"			"35"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"30"
+			}
+		}
+	}
+	"item_recipe_butterfly"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"138"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_butterfly"
+		"ItemRequirements"
+		{
+			"01"						"item_eagle;item_talisman_of_evasion;item_gloves"
+			// "01"						"item_eagle;item_talisman_of_evasion;item_quarterstaff"
+		}
+	}
+	//魔龙枪
+	"item_dragon_lance"
+	{
+		"ID"							"236"
+		// "BaseClass"         	"item_datadriven"
+        // "AbilityTextureName"	"item_dragon_lance"
+		"ItemCost"						"2000"
+        "ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		// "IsSupply"						"3"		//补给
+
+		// "Modifiers"
+		// {
+		// 	"modifier_item_dragon_lance_bg"
+		// 	{
+		// 		"Passive"	"1"
+		// 		"IsHidden"	"1"
+		// 		"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+		// 		"Properties"
+		// 		{
+		// 			"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"%base_attack_range"
+		// 		}
+		// 	}
+		// }
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility1"			"12"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength1"		"12"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"base_attack_range"		"100"
+			}
+		}
+	}
+	"item_recipe_dragon_lance"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"234"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1250"
+		"ItemShopTags"					""
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_dragon_lance"
+		"ItemRequirements"
+		{
+			"01"						"item_javelin"
+		}
+	}
+
+	//黯灭
+	"item_desolator"
+	{
+		"ID"							"168"
+		"ItemCost"						"1000"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"4"		//补给
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"40"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"corruption_armor"		"-8"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"corruption_duration"	"0.1"
+			}
+		}
+	}
+	"item_recipe_desolator"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"167"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_desolator"
+		"ItemRequirements"
+		{
+			"01"						"item_demon_edge;item_blight_stone"
+			// "01"						"item_mithril_hammer;item_blight_stone"
+			// "01"						"item_mithril_hammer;item_mithril_hammer;item_blight_stone"
+		}
+	}
+	
+	//速度之靴
+	// "item_boots"
+	// {
+	// 	"BaseClass"         	"item_datadriven"
+    //     "AbilityTextureName"	"item_boots"
+	// 	"ID"							"29"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	// 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	// 	"Model"							"models/props_gameplay/boots_of_speed.vmdl"
+	// 	"ItemCost"						"500"
+	// 	"ItemDroppable"                 "1"
+	// 	"SecretShop"					"0"		//神秘商店
+	// 	"SideShop"						"1"		//边路商店
+	// 	"GlobalShop"					"0"		//全部商店
+
+	// 	"Modifiers"
+	// 	{
+	// 		"modifier_item_boots"
+	// 		{
+	// 			"Passive"	"1"
+	// 			"IsHidden"	"1"
+	// 			"Properties"
+	// 			{
+	// 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE"	"%bonus_movement_speed"
+	// 			}
+	// 		}
+	// 	}
+	// 	"AbilitySpecial"
+	// 	{
+	// 		"01"
+	// 		{
+	// 			"var_type"				"FIELD_INTEGER"
+	// 			"bonus_movement_speed"	"10"
+	// 		}
+	// 	}
+	// }
+	//奥术鞋
+	"item_arcane_boots_bg"
+	{
+		// "BaseClass"         	"ite "
+		"BaseClass"         	"item_datadriven"
+		// "ScriptFile"			"Ability\items\item_arcane_boots_lua"
+        "AbilityTextureName"	"item_arcane_boots"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"							"18000"
+		// "FightRecapLevel"				"1"
+		"ItemCost"						"1000"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"2"		//补给
+
+		"AbilityCooldown"				"5"
+		"AbilityManaCost"				"0"
+		"Modifiers"
+		{
+			"modifier_item_arcane_boots_bg"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE"	"%bonus_movement"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxMana"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxMana"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement"		"20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana1"			"250"
+			}			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"replenish_amount1"		"160"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"replenish_radius1"		"1200"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"2"
+			}	
+			"20"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_type"				"1"
+			}	
+			"21"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cd_getcard"			"5"
+			}	
+			"22"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_count"			"-1"
+			}	
+		}
+	}
+	// "item_recipe_arcane_boots"
+	// {
+	// 	// "BaseClass"                     "item_recipe_arcane_boots"
+	// 	"BaseClass"                     "item_datadriven"
+	// 	// "ID"							"179"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	// 	// "ItemCost"						"0"
+	// 	// "ItemShopTags"					""
+	// 	// "ItemRecipe"					"1"
+	// 	// "ItemResult"					"item_arcane_boots"
+	// 	// "SecretShop"					"0"		//神秘商店
+	// 	// "SideShop"						"1"		//边路商店
+	// 	// "GlobalShop"					"0"		//全部商店
+
+	// 	// "ItemRequirements"
+	// 	// {
+	// 	// 	// "01"						"item_boots;item_energy_booster"
+	// 	// 	"01"						""
+	// 	// }
+	// }
+
+	//银月
+	"item_moon_shard"
+	{
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"							"247"
+		"ItemCost"						"0"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"5"		//补给
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"110"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_night_vision1"	"0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"consumed_bonus"	"60"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"consumed_bonus_night_vision1"	"0"
+			}
+		}
+	}
+	//坚韧球
+	"item_pers"
+	{
+		"ID"							"69"
+		"BaseClass"         			"item_datadriven"
+        "AbilityTextureName"			"item_pers"
+		"ItemCost"						"0"
+        "ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"3"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_pers"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiXue"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiXue"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_health_regen123"	"6.0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mana_regen1"		"0"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen_hero_round"	"1"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_health_regen_hero"	"100"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_bz"	"40"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero"	"1"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero_round"	"1"
+			}
+		}
+	}
+	//相位鞋
+	"item_phase_boots_bg"
+	{
+		"BaseClass"         	"item_datadriven"
+        "AbilityTextureName"	"item_phase_boots"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"							"5000"
+		"ItemCost"						"1000"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"2"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_phase_boots_bg"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE"	"%bonus_movement_speed"
+					// "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+					// "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+				}
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/Ability/items/item_phase_boots.lua"
+						"Function"		"onItem_phase_boots"
+						"Target"		"TARGET"
+						"Damage"		"%attack_damage"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement_speed"	"20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage_melee1"			"18"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage_range1"			"12"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_block_melee"	"0"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_block_ranged"	"0"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_chance"			"0"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"phase_movement_speed"  "22"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"phase_movement_speed_range"  "15"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"phase_duration"		"5.0"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"0"
+			}
+			"11"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor1"			"5"
+			}
+			"12"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage1"			"15"
+			}
+		}
+	}
+	// "item_recipe_phase_boots"
+	// {
+	// 	// General
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ID"							"49"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	// 	"Model"							"models/props_gameplay/recipe.vmdl"
+	
+	// 	// Item Info
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ItemCost"						"0"	
+	// 	"ItemShopTags"					""
+		
+	// 	// Recipe
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ItemRecipe"					"1"
+	// 	"ItemResult"					"item_phase_boots"
+	// 	"ItemRequirements"
+	// 	{
+	// 		"01"						""
+	// 		// "01"						"item_boots;item_chainmail;item_blades_of_attack"
+	// 	}
+	// }
+
+	//钢爪
+	"item_iron_talon_bg"
+	{
+		"BaseClass"         	"item_datadriven"
+		"AbilityTextureName"	"item_iron_talon"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ItemCost"						"500"
+		"ID"							"20000"
+		"ItemQuality"					"common"
+		"IsObsolete"					"0"
+		"ItemPurchasable"				"1"
+		"ItemStackable"					"1"
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"1"		//补给
+
+		"AbilityCooldown"				"5"
+		
+		"Modifiers"
+		{
+			"modifier_item_iron_talon"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+						"CardType"			"MONSTER"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_atkMonster"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"CardType"			"MONSTER"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"bOn"				"false"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_atkMonster"
+					}
+				}
+			}
+		}
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_bonus123"			"24"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_bonus_ranged"	"7"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"quelling_range_tooltip1"			"350"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cast_range_ward1"			"450"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"creep_damage_pct1"			"40"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_health_regen1"	"2"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"alternative_cooldown1"	"4"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_range1"			"350"
+			}
+			//---------------------------------------------------------------------------------------------------------
+			//custom
+			//---------------------------------------------------------------------------------------------------------
+			"21"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_bonus"			"50"
+			}
+			"22"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cd_getcard"			"5"
+			}
+			"23"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_count"			"-1"
+			}	
+		}
+	}
+
+	// Recipe: Scepter 阿哈利姆神杖
+	"item_recipe_ultimate_scepter"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"107"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"                     "item_recipe_ultimate_scepter"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1000"
+		"ItemShopTags"					""
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_ultimate_scepter"
+		"ItemRequirements"
+		{
+			"01"						"item_point_booster;item_ultimate_orb"
+		}
+	}
+	// 阿哈利姆神杖
+	"item_ultimate_scepter"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"108"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"         			"item_datadriven"
+		"AbilityTextureName"			"item_ultimate_scepter"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityCooldown"				"5"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"ItemShopTags"					"int;str;agi;mana_pool;health_pool;hard_to_tag"
+		"ItemQuality"					"rare"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"ItemDroppable"                 "1"
+		//	"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		//	"ShouldBeSuggested"				"1"
+		// 唯一物品
+		"ItemStackable"					"0"
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		// "IsSupply"						"5"		//补给
+
+		//Modifiers
+		//-------------------------------------------------------------------------------------------------------------
+		"Modifiers"
+		{
+			"modifier_item_ultimate_scepter"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					// "MODIFIER_PROPERTY_MANA_BONUS"					"%bonus_mana"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"%spell_amp"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_agility"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"				"%bonus_health"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxMana"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+						"CardType"			"HERO"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxHP"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxMana"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"CardType"			"HERO"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxHP"
+					}
+				}
+			}
+		}
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_all_stats123"		"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana1"			"0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spell_amp1"				"5"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"10"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"10"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spell_amp"				"10"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"175"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"1"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cd_getcard"			"5"
+			}
+			"11"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_count"			"-1"
+			}	
+			"12"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_type"				"10000"
+			}
+		}
+	}
+
+	//闪烁匕首
+	"item_blink"
+	{
+		"BaseClass"         	"item_datadriven"
+        "AbilityTextureName"	"item_blink"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"							"1"
+		"ItemCost"						"2500"
+		"ItemDroppable"                 "1"
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"4"		//补给
+
+		"AbilityCooldown"				"5"
+		"AbilityManaCost"				"0"
+
+		"Modifiers"
+		{
+			"modifier_item_blink"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"blink_range1"			"1200"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"blink_damage_cooldown1"	"3.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"blink_range_clamp1"		"960"
+			}
+			"21"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_type"				"5"
+			}	
+			"22"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cd_getcard"			"5"
+			}	
+			"23"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_count"			"-1"
+			}	
+		}
+	}
+
+	//否决
+	"item_nullifier"
+	{
+		"BaseClass"         	"item_datadriven"
+        "AbilityTextureName"	"item_nullifier"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"							"225"
+		"ItemCost"						"0"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"5"		//补给
+
+		"AbilityCooldown"				"5"
+		"AbilityManaCost"				"0"
+
+		"Modifiers"
+		{
+			"modifier_item_nullifier"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					// "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+					// "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_agility"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"%spell_amp"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_attributes"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_attributes"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor1"			"5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_regen1"			"6"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"mute_duration1"			"6.0"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"projectile_speed1"		"750"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_pct1"				"100"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"slow_interval_duration1"	"0.4"
+			}
+			"11"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen_hero_round1"	"1"
+			}
+			"12"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen_hero1"		"120"
+			}
+			"13"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"10"
+			}
+			"14"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"10"
+			}
+			"15"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spell_amp"				"10"
+			}
+			"21"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_type"				"4"
+			}	
+			"22"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cd_getcard"			"5"
+			}	
+			"23"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_count"			"-1"
+			}	
+		}
+	}
+	"item_recipe_nullifier"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"224"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_nullifier"
+		"ItemRequirements"
+		{
+			"01"						"item_mithril_hammer;item_ultimate_orb"
+			// "01"						"item_relic;item_ring_of_health"
+		}
+	}
+
+	//紫苑
+	"item_orchid"
+	{
+		"BaseClass"         	"item_datadriven"
+        "AbilityTextureName"	"item_orchid"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"							"98"
+		"ItemCost"						"0"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"4"		//补给
+		
+		"AbilityCooldown"				"5"
+		"AbilityManaCost"				"0"
+
+		"Modifiers"
+		{
+			"modifier_item_orchid"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"%spell_amp"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect1"		"30"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"20"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"20"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mana_regen1"		"5.5"
+			}	
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"silence_damage_percent1"	"30"
+			}	
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"silence_duration1"		"5"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_range1"		"900"
+			}
+			"11"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spell_amp"				"10"
+			}
+			"12"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_bz"	"20"
+			}
+			"13"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero"	"1"
+			}
+			"14"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero_round"	"2"
+			}
+			"21"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_type"				"3"
+			}	
+			"22"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cd_getcard"			"5"
+			}	
+			"23"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_count"			"-1"
+			}	
+		}
+	}
+	"item_recipe_orchid"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"97"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_orchid"
+		"ItemRequirements"
+		{
+			"01"						"item_oblivion_staff_bg;item_gloves;item_mithril_hammer"
+		}
+	}
+
+	//血棘
+	"item_bloodthorn"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"250"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"         			"item_datadriven"
+        "AbilityTextureName"			"item_bloodthorn"
+		"FightRecapLevel"				"1"
+		// "SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0"
+		"AbilityCooldown"				"3"
+		// "AbilitySharedCooldown"			"orchid"
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		// "IsSupply"						"5"		//补给
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		"ItemCost"						"0"
+		"ItemShopTags"					"int;attack_speed;damage;regen_mana;damage;hard_to_tag"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"orchid malevolence"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ShouldBeSuggested"				"1"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+
+		"Modifiers"
+		{
+			"modifier_item_bloodthorn"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"%spell_amp"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+				}
+				"OnAttackStart"
+				{
+					"Random"
+					{
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target"	"CASTER"
+								"ModifierName"	"modifier_item_bloodthorn_crit"
+							}
+						}
+						"Chance"	"%crit_chance"
+						"PseudoRandom"	"1"
+					}
+				}
+			}
+			"modifier_item_bloodthorn_crit"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%crit_multiplier"
+				}
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_item_bloodthorn_crit"
+					}
+				}
+				"IsHidden"	"1"
+			}
+		}
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect1"		"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"30"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"68"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mana_regen1"		"5.5"
+			}			
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_chance"			"20"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_multiplier"		"175"
+			}	
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"silence_damage_percent1"	"30"
+			}	
+			"08"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"silence_duration1"		"5"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"target_crit_multiplier1"		"140"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_range1"			"900"
+			}
+			"11"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tooltip_crit_chance1"	"100"
+			}
+			"21"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_type"				"3"
+			}	
+			"22"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cd_getcard"			"5"
+			}	
+			"23"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_count"			"-1"
+			}	
+			"15"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spell_amp"				"15"
+			}
+			"16"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_bz"	"20"
+			}
+			"17"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero"	"1"
+			}
+			"18"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero_round"	"2"
+			}
+		}
+	}
+	"item_recipe_bloodthorn"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"245"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_bloodthorn"
+		"ItemRequirements"
+		{
+			"01"						"item_orchid;item_lesser_crit_bg"
+		}
+	}
+
+	//刷新球
+	"item_refresher"
+	{
+		"BaseClass"         	"item_datadriven"
+        "AbilityTextureName"	"item_refresher"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ID"							"110"
+		"ItemCost"						"0"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"5"		//补给
+
+		"AbilityCooldown"				"5"
+		"AbilityManaCost"				"0"
+
+		"Modifiers"
+		{
+			"modifier_item_refresher"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiXue"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiXue"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health_regen1"	"13"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mana_regen1"		"12.0"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen_hero_round"	"1"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_health_regen_hero"	"200"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_bz"	"80"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero"	"2"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero_round"	"1"
+			}
+			"21"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_type"				"2"
+			}	
+			"22"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cd_getcard"			"5"
+			}	
+			"23"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_count"			"-1"
+			}	
+		}
+	}
+	"item_recipe_refresher"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"109"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"FightRecapLevel"				"2"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_refresher"
+		"ItemRequirements"
+		{
+			"01"						"item_pers;item_pers"
+		}
+	}
+
+	//先锋盾
+	"item_vanguard"
+	{
+		"ID"							"125"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1000"
+		"ItemShopTags"					"regen_health;block;health_pool"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"vg;vanguard"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ShouldBeSuggested"				"1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"2"		//补给
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"250"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_health_regen1"	"7.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_damage_melee"	"30"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_damage_ranged"	"30"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_chance"			"25"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen_hero_round"	"1"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_health_regen_hero"	"140"
+			}
+		}
+	}
+	"item_recipe_vanguard"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"124"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"750"	
+		"ItemShopTags"					""
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_vanguard"
+		"ItemRequirements"
+		{
+			"01"						"item_stout_shield"
+			// "01"						"item_ring_of_health;item_vitality_booster;item_stout_shield"
+		}
+	}
+
+	//动力鞋
+	"item_power_treads_bg"
+	{
+		"ID"							"10063"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"         			"item_datadriven"
+        "AbilityTextureName"			"item_power_treads"
+
+		"ItemCost"						"1000"
+		"ItemShopTags"					"attack_speed;move_speed;int;agi;str"
+		"ItemQuality"					"common"
+		"ItemAliases"					"power treads"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ShouldBeSuggested"				"1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"2"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_power_treads"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE"	"%bonus_movement_speed"
+					// "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
+				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/items/item_power_treads.lua"
+						"Function"			"onItem_power_treads"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/items/item_power_treads.lua"
+						"Function"			"onItem_power_treads"
+					}
+				}
+			}
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement_speed"  "20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat1"			"10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed1"			"20"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage1"			"0"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_to_speed"			"10"
+			}
+		}
+	}
+	// "item_recipe_power_treads_bg"
+	// {
+	// 	// General
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ID"							"10062"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	// 	"Model"							"models/props_gameplay/recipe.vmdl"
+	// 	"BaseClass"						"item_recipe_arcane_boots"
+	// 	"AbilityTextureName"			"item_recipe_power_treads"
+
+	// 	// Item Info
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ItemCost"						"0"	
+	// 	"ItemShopTags"					""
+	// 	"SecretShop"					"0"		//神秘商店
+	// 	"SideShop"						"1"		//边路商店
+	// 	"GlobalShop"					"0"		//全部商店
+
+	// 	// Recipe
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ItemRecipe"					"1"
+	// 	"ItemResult"					"item_power_treads_bg"
+	// 	"ItemRequirements"
+	// 	{
+	// 		"01"						"item_boots;"
+	// 		// "01"						"item_boots;item_gloves;item_sobi_mask"
+	// 	}
+	// }
+
+	//挑战头巾
+	"item_hood_of_defiance_bg"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"13100"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"         			"item_datadriven"
+        "AbilityTextureName"			"item_hood_of_defiance"
+
+		// Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1000"
+		"ItemShopTags"					"regen_health;magic_resist"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"hood of defiance"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ShouldBeSuggested"				"1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"2"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_power_treads_bg"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_spell_resist"
+				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiXue"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiXue"
+					}
+				}
+			}
+		}
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_spell_resist"	"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_health_regen1"	"8.0"
+			}			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_resist1"	"20"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"barrier_block1"			"325"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"barrier_duration1"		"12.0"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen_hero_round"	"1"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_health_regen_hero"	"160"
+			}
+			"08"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"need_mana_damege"			"300"
+			}
+			"09"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"sub_mana_damege"			"50"
+			}
+		}
+	}
+	// "item_recipe_hood_of_defiance"
+	// {
+	// 	// General
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ID"							"130"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		
+	// 	// Item Info
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ItemCost"						"0"	
+	// 	"ItemShopTags"					""
+		
+	// 	// Recipe
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ItemRecipe"					"1"
+	// 	"ItemResult"					"item_hood_of_defiance"
+	// 	"ItemRequirements"
+	// 	{
+	// 		"01"						""
+	// 		// "01"						"item_ring_of_health;item_cloak;item_ring_of_regen"
+	// 	}
+	// }
+
+	//洞察烟斗
+	"item_pipe_lua"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"10090"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+        "AbilityTextureName"			"item_pipe"
+		// "BaseClass"         			"item_datadriven"
+		"BaseClass"         			"item_lua"
+		"ScriptFile"					"Ability\items\item_pipe_lua"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"FightRecapLevel"				"2"
+
+		// Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		// "AbilityCooldown"				"1"
+		"AbilityManaCost"				"0"
+		"AbilityCastRange"				"0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"ItemShopTags"					"regen_health;boost_magic_resist"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"pipe of insight"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemAlertable"					"1"
+		// "ShouldBeSuggested"				"1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"4"		//补给
+
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+
+		"Modifiers"
+		{
+			"modifier_item_pipe_lua"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiXue"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiXue"
+					}
+				}
+			}
+		}
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"magic_resistance"		"35"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen_hero_round"	"1"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen_hero"		"160"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"miss_mana_damege_percentage"	"34"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"miss_need_mana"				"1"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_bz"	"40"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero"	"1"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero_round"	"2"
+			}
+		}
+	}
+	"item_recipe_pipe_lua"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"10089"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"						"item_recipe_arcane_boots"
+		"AbilityTextureName"			"item_recipe_pipe"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_pipe_lua"
+		"ItemRequirements"
+		{
+			// "01"						"item_hood_of_defiance;item_headdress"
+			"01"						"item_hood_of_defiance_bg;item_void_stone"
+		}
+	}
+
+	//赤红甲
+	"item_recipe_crimson_guard"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"243"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_crimson_guard"
+		"ItemRequirements"
+		{
+			"01"						"item_vanguard;item_platemail"
+		}
+	}
+	"item_crimson_guard"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"242"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"5"
+		"AbilityCastRange"				"0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"ItemShopTags"					"armor;boost_armor;regen_health;block;health_pool"
+		"ItemQuality"					"epic"
+		"ItemAlertable"					"0"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ShouldBeSuggested"				"1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"4"		//补给
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"250"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health_regen1"	"7"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_all_stats1"		"2"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"10"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_damage_melee"	"30"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_damage_ranged"	"30"
+			}			
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_chance"			"35"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_aoe_armor1"		"2"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration1"	"12"
+			}		
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_aoe_radius1"		"1200"
+			}		
+			"11"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_damage_melee_active1"	"60"
+			}
+			"12"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_damage_ranged_active1"	"60"
+			}		
+			"13"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_chance_active1"			"100"
+			}	
+			"14"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tooltip_reapply_time1"	"46"
+			}
+			"15"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_health_regen_hero_round"	"1"
+			}
+			"16"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_health_regen_hero"	"140"
+			}
+			"31"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_type"				"6"
+			}	
+			"32"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cd_getcard"			"5"
+			}	
+			"33"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_count"			"-1"
+			}	
+		}
+	}
+
+	//刃甲
+	"item_recipe_blade_mail"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"126"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"FightRecapLevel"				"1"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_blade_mail"
+		"ItemRequirements"
+		{
+			"01"						"item_demon_edge;item_veil_of_discord_bg"
+			// "01"						"item_broadsword;item_veil_of_discord_bg"
+		}
+	}
+	"item_blade_mail"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"127"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"         			"item_datadriven"
+        "AbilityTextureName"			"item_blade_mail"
+
+		// Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"5"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		"ItemCost"						"0"
+		"ItemShopTags"					"damage;armor;int;hard_to_tag"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"bm;blade mail;blademail"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ShouldBeSuggested"				"1"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"4"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_blade_mail"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_spell_resist"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+				}
+			}
+		}
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"45"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"7"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect1"		"10"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration1"				"4.5"
+			}
+			"21"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_type"				"7"
+			}	
+			"22"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cd_getcard"			"5"
+			}	
+			"23"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_count"			"-1"
+			}
+			"24"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_spell_resist"	"22"
+			}
+		}
+	}
+
+	//纷争面纱
+	// "item_recipe_veil_of_discord_bg"
+	// {
+	// 	// General
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ID"							"10189"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	// 	"Model"							"models/props_gameplay/recipe.vmdl"
+	// 	"BaseClass"						"item_recipe_arcane_boots"
+	// 	"AbilityTextureName"			"item_recipe_veil_of_discord"
+
+	// 	// Item Info
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ItemCost"						"1250"	
+	// 	"ItemShopTags"					""
+	// 	"SecretShop"					"0"		//神秘商店
+	// 	"SideShop"						"1"		//边路商店
+	// 	"GlobalShop"					"0"		//全部商店
+
+	// 	// Recipe
+	// 	//-------------------------------------------------------------------------------------------------------------
+	// 	"ItemRecipe"					"1"
+	// 	"ItemResult"					"item_veil_of_discord_bg"
+	// 	"ItemRequirements"
+	// 	{
+	// 		"01"						";"
+	// 		// "01"						"item_chainmail;item_cloak;"
+	// 	}
+	// }
+	"item_veil_of_discord_bg"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"10190"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"         			"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"			"item_veil_of_discord"
+
+		// Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		"ItemCost"						"1000"
+		"ItemShopTags"					"armor;boost_magic_resist"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"vod;veil of discord"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ShouldBeSuggested"				"1"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"0"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"2"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_veil_of_discord"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%bonus_spell_resist"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
+				}
+			}
+		}
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"7"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_spell_resist"			"22"
+			}
+		}
+	}
+
+	//大炮
+	"item_greater_crit"
+	{
+		"ID"							"141"
+		"ItemCost"						"0"
+        "ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"5"		//补给
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"70"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_chance"			"25"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_multiplier"		"200"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_crit_damage"	"135"
+			}
+		}
+	}
+	"item_recipe_greater_crit"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"140"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_greater_crit"
+		"ItemRequirements"
+		{
+			"01"						"item_lesser_crit_bg;item_demon_edge"
+		}
+	}
+	
+	//bkb 黑皇杖
+	"item_recipe_black_king_bar"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"115"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_black_king_bar"
+		"ItemRequirements"
+		{
+			"01"						"item_reaver;item_mithril_hammer"
+			// "01"						"item_ogre_axe;item_mithril_hammer"
+		}
+	}
+	"item_black_king_bar"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"116"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"         			"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"			"item_black_king_bar"
+		"FightRecapLevel"				"2"
+
+		// Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"5"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"2300"
+		"ItemShopTags"					"str;damage;hard_to_tag"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"bkb;black king bar"
+		"ItemSellable"					"1"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ShouldBeSuggested"				"1"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"4"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_black_king_bar"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_attributes"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_getCard"
+						"CardType"			"ITEM"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_attributes"
+					}
+				}
+			}
+		}
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"20"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration1"				"10.0 9.0 8.0 7.0 6.0 5.0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"max_level1"				"6"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"model_scale1"			"30"     // Percentage over model scale
+			}
+			"21"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_type"				"8"
+			}	
+			"22"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cd_getcard"			"5"
+			}	
+			"23"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"card_count"			"-1"
+			}	
+		}
+	}
+
+	//强袭胸甲
+	"item_recipe_assault"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"111"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_assault"
+		"ItemRequirements"
+		{
+			"01"						"item_platemail;item_hyperstone;item_chainmail"
+		}
+	}
+	"item_assault"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"112"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityCastRange"				"0"
+		"BaseClass"         			"item_datadriven"
+        "AbilityTextureName"			"item_assault"
+
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"2500"
+		"ItemShopTags"					"attack_speed;armor;hard_to_tag"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"ac;assault cuirass"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ShouldBeSuggested"				"1"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"4"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_assault"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+						"ScriptFile"		"scripts/vscripts/Ability/items/item_assault.lua"
+						"Function"			"onItem_assault"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/items/item_assault.lua"
+						"Function"			"onItem_assault"
+					}
+				}
+			}
+			"modifier_item_assault_buff"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%buff_bonus_attack_speed"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%buff_bonus_armor"
+				}
+				"EffectName"	"particles/units/heroes/hero_lich/lich_frost_armor.vpcf"
+				"EffectAttachType"	"follow_overhead"
+			}
+			"modifier_item_assault_debuff"
+			{
+				"IsDebuff"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%debuff_negative_armor"				
+				}
+				"EffectName"	"particles/units/heroes/hero_dazzle/dazzle_armor_enemy.vpcf"
+				"EffectAttachType"	"follow_overhead"
+			}
+		}
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_dazzle/dazzle_armor_enemy.vpcf"
+			"particle"	"particles/units/heroes/hero_lich/lich_frost_armor.vpcf"
+		}
+
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"55"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_radius1"			"1200"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_attack_speed1"		"25"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_positive_armor1"	"5"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_negative_armor1"	"-5"
+			}	
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"buff_bonus_attack_speed"	"10"
+			}
+			"08"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"buff_bonus_armor"			"2"
+			}
+			"09"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"debuff_negative_armor"		"-1"
+			}
+		}
+	}
+
+	//慧光
+	"item_recipe_kaya"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"258"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_kaya"
+		"ItemRequirements"
+		{
+			// "01"						"item_mystic_staff;item_staff_of_wizardry;item_void_stone"
+			"01"						"item_mystic_staff;item_oblivion_staff_bg;item_void_stone"
+		}
+	}
+	"item_kaya"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"						"259"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"         			"item_datadriven"
+        "AbilityTextureName"			"item_kaya"
+
+		// Item Info^
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"ItemShopTags"					"int;mana"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"ky;kaya"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS | DECLARE_PURCHASES_IN_SPEECH"
+		"ShouldBeSuggested"				"1"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"5"		//补给
+
+		"Modifiers"
+		{
+			"modifier_item_kaya"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"%spell_amp"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_CDManaSub"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_huiMo"
+					}
+					"RunScript"
+					{
+						"Target"			"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_CDManaSub"
+					}
+				}
+			}
+		}
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect1"			"16"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"manacost_reduction1"			"1"
+			}			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spell_amp"				"35"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_sub"				"1"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_bz"	"60"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero"	"1"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen_hero_round"	"1"
+			}
+		}
+	}
+
+	//玲珑心
+	"item_recipe_octarine_core"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"228"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_octarine_core"
+		"ItemRequirements"
+		{
+			"01"						"item_mystic_staff;item_point_booster"
+		}
+	}
+	"item_octarine_core"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"235"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"         			"item_datadriven"
+        "AbilityTextureName"			"item_octarine_core"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"ItemShopTags"					"move_speed;boost_mana;mana_pool"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"mana;mb;octarine core"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_ALWAYS"
+		"ShouldBeSuggested"				"1"
+		"ItemDroppable"                 "1"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"	//永不能拆分
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"4"		//补给
+
+
+		"Modifiers"
+		{
+			"modifier_item_octarine_core"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"%spell_amp"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxMana"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_CDManaSub"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnCreated"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxHP"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxMana"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+                        "ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_CDManaSub"
+					}
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"State"				"OnDestroy"
+						"ScriptFile"		"scripts/vscripts/Ability/AbilityManager.lua"
+						"Function"			"onItem_MaxHP"
+					}
+				}
+			}
+		}
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intelligence1"	"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"425"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"1"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_cooldown1"		"1"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"hero_lifesteal1"		"25"
+			}			
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"creep_lifesteal1"		"5"
+			}	
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"active_duration1"		"7"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cd_sub"				"1"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spell_amp"				"25"
+			}
+		}
+	}
+
+	//圣剑
+	"item_recipe_rapier"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"132"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_rapier"
+		"ItemRequirements"
+		{
+			// "01"						"item_relic;item_demon_edge"
+			"01"						"item_relic;item_relic"
+		}
+	}
+	"item_rapier"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"133"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Model"							"models/props_gameplay/divine_rapier.vmdl"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"6000"
+		"ItemShopTags"					"damage"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"divine rapier"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemSellable"					"0"
+		"ItemKillable"					"0"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS | DECLARE_PURCHASES_IN_SPEECH"
+		"ItemContributesToNetWorthWhenDropped"	"0"
+		"AllowedInBackpack"				"1"
+		"IsTempestDoubleClonable"		"0"
+		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"
+		"ShouldBeSuggested"				"1"
+		"SecretShop"					"1"		//神秘商店
+		"SideShop"						"0"		//边路商店
+		"GlobalShop"					"0"		//全部商店
+		"IsSupply"						"5"		//补给
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"220"
+			}
+		}
+	}
+}

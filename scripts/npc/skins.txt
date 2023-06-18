@@ -1,0 +1,422 @@
+"skin"
+{
+	"SkinType_1" //tp
+	{
+        "kind"		"particle"
+		"SkinID_1_0"
+		{
+			"1"
+			{
+				"EffectName"				"particles/econ/events/nexon_hero_compendium_2014/teleport_start_nexon_hero_cp_2014.vpcf"
+				"EffectAttachType"  		"PATTACH_POINT"
+				"Duration"  				"2.5"
+				// "ControlPoints"
+				// {
+				// 	"01"                "CASTER:GetOrigin()+Vector(0,0,100)"        //CP0 
+				// 	"02"                "CASTER:GetOrigin()+Vector(0,0,100)"        //CP1
+				// }
+				"ControlPointEntities"
+				{
+					"0"
+					{
+						"CASTER"                "attach_hitloc"
+					}
+					"1"
+					{
+						"CASTER"                "attach_hitloc"
+					}
+				}
+			}
+			"2"
+			{
+				"EffectName"				"particles/card_effects/teleport/teleport_end.vpcf"
+				"EffectAttachType"  		"PATTACH_POINT"
+				"Duration"  				"2.5"
+				"ControlPoints"
+				{
+					"00"                "TARGET[1]:GetOrigin()"        //CP0 
+					"01"                "TARGET[1]:GetOrigin()"        //CP1
+				}
+			}
+		}
+		"SkinID_1_1"
+		{
+			"1"
+			{
+				"EffectName"				"particles/econ/events/nexon_hero_compendium_2014/teleport_start_nexon_hero_cp_2014.vpcf"
+				"EffectAttachType"  		"PATTACH_POINT"
+				"Duration"  				"2.5"
+				// "ControlPoints"
+				// {
+				// 	"01"                "CASTER:GetOrigin()+Vector(0,0,100)"        //CP0 
+				// 	"02"                "CASTER:GetOrigin()+Vector(0,0,100)"        //CP1
+				// }
+				"ControlPointEntities"
+				{
+					"0"
+					{
+						"CASTER"                "attach_hitloc"
+					}
+					"1"
+					{
+						"CASTER"                "attach_hitloc"
+					}
+				}
+			}
+			"2"
+			{
+				"EffectName"				"particles/econ/events/nexon_hero_compendium_2014/teleport_end_nexon_hero_cp_2014.vpcf"
+				"EffectAttachType"  		"PATTACH_POINT"
+				"Duration"  				"2.5"
+				"ControlPoints"
+				{
+					"00"                "TARGET[1]:GetOrigin()"        //CP0 
+					"01"                "TARGET[1]:GetOrigin()"        //CP1
+				}
+			}
+		}
+		"SkinID_1_2"
+		{
+			"1"
+			{
+				"EffectName"				"particles/econ/events/fall_major_2015/teleport_start_fallmjr_2015_lvl2.vpcf"
+				"EffectAttachType"  		"PATTACH_POINT"
+				"Duration"  				"2.5"
+				"ControlPoints"
+				{
+					"00"                "CASTER:GetOrigin()+Vector(0,0,10)"        //CP0 
+					"01"                "CASTER:GetOrigin()+Vector(0,0,10)"        //CP1
+				}
+			}
+			"2"
+			{
+				"EffectName"				"particles/econ/events/fall_major_2015/teleport_end_fallmjr_2015_lvl2.vpcf"
+				"EffectAttachType"  		"PATTACH_POINT"
+				"Duration"  				"2.5"
+				"ControlPoints"
+				{
+					"00"                "TARGET[1]:GetOrigin()"        //CP0 
+					"01"                "TARGET[1]:GetOrigin()"        //CP1
+				}
+			}
+		}
+	}
+	"SkinType_2" //脚印
+	{
+        "kind"		"particle"
+		"SkinID_2_1"//鬼手索命
+		{
+			"1"
+			{
+				"EffectName"				"particles/custom/sink/footprint/bane_fiendsgrip_hands.vpcf"
+				"EffectAttachType"  		"PATTACH_OVERHEAD_FOLLOW"
+			}
+		}
+		"SkinID_2_2"//败腐心森
+		{
+			"1"
+			{
+				"EffectName"				"particles/econ/courier/courier_trail_fungal/courier_trail_fungal.vpcf"
+				"EffectAttachType"  		"PATTACH_POINT_FOLLOW"  
+			}
+		}
+		"SkinID_2_10001"//盈寸之地
+		{
+			"1"
+			{
+				"EffectName"				"particles/custom/sink/footprint/courier_trail_03.vpcf"
+				"EffectAttachType"  		"PATTACH_POINT_FOLLOW"  
+				// "ControlPointEntities"
+				// {
+				// 	"00"
+				// 	{
+				// 		"CASTER"                "attach_hitloc"
+				// 	} 
+				// 	"03"
+				// 	{
+				// 		"CASTER"                "attach_hitloc"
+				// 	} 
+				// }
+			}
+		}
+		"SkinID_2_10002"//冤魂索命
+		{
+			"1"
+			{
+				"EffectName"				"particles\econ\items\necrolyte\necro_ti9_immortal\necro_ti9_immortal_shroud_debuff_model.vpcf"
+				"EffectAttachType"  		"PATTACH_OVERHEAD_FOLLOW"  
+			}
+		}
+		"SkinID_2_10003"//素裹寒霜
+		{
+			"1"
+			{
+				"EffectName"				"particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_ground_ambient.vpcf"
+				"EffectAttachType"  		"PATTACH_POINT_FOLLOW"
+			}
+		}
+		"SkinID_2_20001"//净晶之径
+		{
+			"1"
+			{
+				"EffectName"				"particles/custom/sink/footprint/ice.vpcf"
+				"EffectAttachType"  		"PATTACH_POINT_FOLLOW"
+				"ControlPointEntities"
+				{
+					"00"
+					{
+						"CASTER"                "attach_hitloc"
+					}
+					"01"
+					{
+						"CASTER"                "attach_hitloc"
+					}
+				}
+			}
+		}
+		"SkinID_2_20002"//熔岩焦土
+		{
+			"1"
+			{
+				"EffectName"				"particles/custom/sink/footprint/courier_roshan_darkmoon_ground.vpcf"
+				"EffectAttachType"  		"PATTACH_POINT_FOLLOW"
+			}
+		}
+		"SkinID_2_30001"//液体纹章
+		{
+			"1"
+			{
+				"EffectName"				"particles/econ/events/ti7/ti7_hero_effect.vpcf"
+				"EffectAttachType"  		"PATTACH_POINT_FOLLOW"  
+			}
+		}
+		"SkinID_2_30002"//晶阶纹章
+		{
+			"1"
+			{
+				"EffectName"				"particles/econ/events/ti8/ti8_hero_effect.vpcf"
+				"EffectAttachType"  		"PATTACH_POINT_FOLLOW"  
+			}
+		}
+		"SkinID_2_30003"//蔓生纹章
+		{
+			"1"
+			{
+				"EffectName"				"particles/econ/events/ti9/ti9_emblem_effect_loadout.vpcf"
+				"EffectAttachType"  		"PATTACH_POINT_FOLLOW"  
+			}
+		}
+		// "SkinID_2_100000"	//彩虹圈
+		// {
+		// 	"1"
+		// 	{
+		// 		"EffectName"				"particles/units/heroes/hero_mars/mars_arena_of_blood_heal.vpcf"
+		// 		"EffectAttachType"  		"PATTACH_POINT_FOLLOW"  
+		// 	}
+		// }
+	}
+	"SkinType_3" //信使
+	{
+        "kind"		"courier"
+		"SkinID_3_0"
+		{
+			"Model"				"models/props_gameplay/donkey.vmdl"
+			"ModelFlying"		"models/props_gameplay/donkey_wings.vmdl"
+			"ModelScale"		"0.7"
+			"Random"
+			{
+				"SkinID_3_0_1"	"50"
+			}
+		}
+		"SkinID_3_0_1"
+		{
+			"Model"				"models/props_gameplay/donkey_dire.vmdl"
+			"ModelFlying"		"models/props_gameplay/donkey_dire_wings.vmdl"
+			"ModelScale"		"0.7"
+		}
+		"SkinID_3_1"	//斑驴小布
+		{
+			"Model"				"models/props_gameplay/donkey.vmdl"
+			"ModelFlying"		"models/props_gameplay/donkey_wings.vmdl"
+			"ModelScale"		"0.7"
+			"Skin"				"1"
+		}
+		"SkinID_3_2"	//哈士奇
+		{
+			"Model"				"models/items/courier/duskie/duskie.vmdl"
+			"ModelFlying"		"models/items/courier/duskie/duskie_flying.vmdl"
+			"ModelScale"		"0.7"
+		}
+		"SkinID_3_3"	//恶霸犬
+		{
+			"Model"				"models/items/courier/butch_pudge_dog/butch_pudge_dog.vmdl"
+			"ModelFlying"		"models/items/courier/butch_pudge_dog/butch_pudge_dog_flying.vmdl"
+			"ModelScale"		"0.7"
+		}
+		"SkinID_3_4"	//草泥马
+		{
+			"Model"				"models/items/courier/livery_llama_courier/livery_llama_courier.vmdl"
+			"ModelFlying"		"models/items/courier/livery_llama_courier/livery_llama_courier_flying.vmdl"
+			"ModelScale"		"0.7"
+		}
+		"SkinID_3_5"	//勇敢的小鸡
+		{
+			"Model"				"models/items/courier/mighty_chicken/mighty_chicken.vmdl"
+			"ModelFlying"		"models/items/courier/mighty_chicken/mighty_chicken_flying.vmdl"
+			"ModelScale"		"0.7"
+		}
+		"SkinID_3_6"	//不屈战犬
+		{
+			"Model"				"models/courier/juggernaut_dog/juggernaut_dog.vmdl"
+			"ModelFlying"		"models/courier/juggernaut_dog/juggernaut_dog_wings.vmdl"
+			"ModelScale"		"0.7"
+		}
+		"SkinID_3_7"	//小钢驴
+		{
+			"Model"				"models/courier/mech_donkey/mech_donkey.vmdl"
+			"ModelFlying"		"models/courier/mech_donkey/mech_donkey_flying.vmdl"
+			"ModelScale"		"0.7"
+		}
+		"SkinID_3_8"	//竭智法师与独角兽
+		{
+			"Model"				"models/courier/donkey_unicorn/donkey_unicorn.vmdl"
+			"ModelFlying"		"models/courier/donkey_unicorn/donkey_unicorn_flying.vmdl"
+			"ModelScale"		"0.7"
+		}
+		"SkinID_3_10001"	//天照
+		{
+			"Model"				"models/items/courier/amaterasu/amaterasu.vmdl"
+			"ModelFlying"		"models/items/courier/amaterasu/amaterasu_flying.vmdl"
+			"ModelScale"		"0.7"
+			"EffectName"		"particles/econ/courier/courier_amaterasu/courier_amaterasu_ambient.vpcf"
+		}
+		"SkinID_3_10002"	//血魔
+		{
+			"Model"				"models/courier/seekling/seekling.vmdl"
+			"ModelFlying"		"models/courier/seekling/seekling_flying.vmdl"
+			"ModelScale"		"0.9"
+			"Skin"				"1"
+		}
+		"SkinID_3_10003"	//甲虫咬人箱
+		{
+			"Model"				"models/courier/beetlejaws/mesh/beetlejaws.vmdl"
+			"ModelFlying"		"models/courier/beetlejaws/mesh/beetlejaws_flying.vmdl"
+			"ModelScale"		"0.8"
+			"EffectName"		"particles/econ/courier/courier_beetlejaw/courier_beetlejaw_ambient.vpcf"
+		}
+		"SkinID_3_10004"	//八戒
+		{
+			"Model"				"models/items/courier/bajie_pig/bajie_pig.vmdl"
+			"ModelFlying"		"models/items/courier/bajie_pig/bajie_pig_flying.vmdl"
+			"ModelScale"		"0.9"
+			"EffectNameFlying"		"particles/econ/courier/courier_bajie/courier_bajie.vpcf"
+		}
+		"SkinID_3_10005"	//僵尸
+		{
+			"Model"				"models/items/courier/pw_zombie/pw_zombie.vmdl"
+			"ModelFlying"		"models/items/courier/pw_zombie/pw_zombie_flying.vmdl"
+			"ModelScale"		"0.7"
+		}
+		"SkinID_3_10006"	//小帕吉
+		{
+			"Model"				"models/courier/minipudge/minipudge.vmdl"
+			"ModelFlying"		"models/courier/minipudge/minipudge_flying.vmdl"
+			"ModelScale"		"0.8"
+		}
+		"SkinID_3_10007"	//基拉魔法师
+		{
+			"Model"				"models/courier/donkey_crummy_wizard_2014/donkey_crummy_wizard_2014.vmdl"
+			"ModelFlying"		"models/courier/donkey_crummy_wizard_2014/donkey_crummy_wizard_2014_flying.vmdl"
+			"ModelScale"		"0.7"
+		}
+		"SkinID_3_20001"	//TI7驴子
+		{
+			"Model"				"models/courier/donkey_ti7/donkey_ti7.vmdl"
+			"ModelFlying"		"models/courier/donkey_ti7/donkey_ti7_flying.vmdl"
+			"ModelScale"		"0.7"
+			"EffectName"		"particles/econ/courier/courier_donkey_ti7/courier_donkey_ti7_ambient.vpcf"
+		}
+		"SkinID_3_20002"	//虚空恐龙
+		{
+			"Model"				"models/items/courier/faceless_rex/faceless_rex.vmdl"
+			"ModelFlying"		"models/items/courier/faceless_rex/faceless_rex_flying.vmdl"
+			"ModelScale"		"0.8"
+			"EffectNameFlying"	"particles/econ/courier/courier_faceless_rex/cour_rex_flying.vpcf"
+		}
+		"SkinID_3_20003"	//地狗天猫
+		{
+			"Model"				"models/items/courier/shibe_dog_cat/shibe_dog_cat.vmdl"
+			"ModelFlying"		"models/items/courier/shibe_dog_cat/shibe_dog_cat_flying.vmdl"
+			"ModelScale"		"0.9"
+			"EffectName"		"particles/econ/courier/courier_shibe/courier_shibe_ambient.vpcf"
+			"EffectNameFlying"	"particles/econ/courier/courier_shibe/courier_shibe_ambient_flying.vpcf"
+		}
+		"SkinID_3_20004"	//翠花
+		{
+			"Model"				"models/items/courier/jumo/jumo.vmdl"
+			"ModelFlying"		"models/items/courier/jumo/jumo_flying.vmdl"
+			"ModelScale"		"0.9"
+		}
+		"SkinID_3_20005"	//白虎
+		{
+			"Model"				"models/items/courier/baekho/baekho.vmdl"
+			"ModelFlying"		"models/items/courier/baekho/baekho_flying.vmdl"
+			"ModelScale"		"0.8"
+			"EffectName"		"particles/econ/courier/courier_baekho/courier_baekho_ambient.vpcf"
+		}
+		"SkinID_3_20006"	//斑竹熊猫
+		{
+			"Model"				"models/items/courier/captain_bamboo/captain_bamboo.vmdl"
+			"ModelFlying"		"models/items/courier/captain_bamboo/captain_bamboo_flying.vmdl"
+			"ModelScale"		"0.8"
+		}
+		// "SkinID_3_30001"	//TI7肉山（珍藏版）
+		// {
+		// 	"Model"				"models/courier/baby_rosh/babyroshan_alt.vmdl"
+		// 	"ModelFlying"		"models/courier/baby_rosh/babyroshan_alt_flying.vmdl"
+		// 	"ModelScale"		"0.6"
+		// 	"Skin"				"1"
+		// 	"EffectName"		"particles/econ/courier/courier_babyrosh_alt_ti7/courier_babyrosh_alt_ti7.vpcf"
+		// }
+		"SkinID_3_30002"	//TI8肉山
+		{
+			"Model"				"models/courier/baby_rosh/babyroshan.vmdl"
+			"ModelFlying"		"models/courier/baby_rosh/babyroshan_flying.vmdl"
+			"ModelScale"		"0.6"
+			"Skin"				"5"
+			"EffectName"		"particles/econ/courier/courier_roshan_ti8/courier_roshan_ti8.vpcf"
+			"EffectNameFlying"	"particles/econ/courier/courier_roshan_ti8/courier_roshan_ti8_flying.vpcf"
+			"Aggressive"		"1"
+		}
+		"SkinID_3_30003"	//TI9肉山
+		{
+			"Model"				"models/courier/baby_rosh/babyroshan_ti9.vmdl"
+			"ModelFlying"		"models/courier/baby_rosh/babyroshan_ti9_flying.vmdl"
+			"ModelScale"		"0.6"
+			"EffectName"		"particles/econ/courier/courier_babyroshan_ti9/courier_babyroshan_ti9_ambient.vpcf"
+		}
+		// "SkinID_3_30004"	//TI8肉山（珍藏版）
+		// {
+		// 	"Model"				"models/courier/baby_rosh/babyroshan_alt.vmdl"
+		// 	"ModelFlying"		"models/courier/baby_rosh/babyroshan_alt_flying.vmdl"
+		// 	"ModelScale"		"0.6"
+		// 	"Skin"				"2"
+		// 	"EffectName"		"particles/econ/courier/courier_babyrosh_alt_ti8/courier_babyrosh_alt_ti8.vpcf"
+		// }
+		"SkinID_3_30005"	//纯金血魔
+		{
+			"Model"				"models/courier/seekling/seekling.vmdl"
+			"ModelFlying"		"models/courier/seekling/seekling_flying.vmdl"
+			"ModelScale"		"0.9"
+			"Skin"				"1"
+			"EffectName"		"particles/econ/courier/courier_seekling_gold/courier_seekling_gold_ambient.vpcf"
+		}
+		"SkinID_3_30006"	//年兽宝宝
+		{
+			"Model"				"models/items/courier/nian_courier/nian_courier.vmdl"
+			"ModelFlying"		"models/items/courier/nian_courier/nian_courier_flying.vmdl"
+			"ModelScale"		"0.9"
+			"EffectName"		"particles/econ/courier/courier_nian/courier_nian_ambient.vpcf"
+		}
+	}
+}

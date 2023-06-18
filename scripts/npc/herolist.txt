@@ -1,0 +1,16 @@
+"CustomHeroList"
+{
+    "npc_dota_hero_phantom_assassin" "-1"
+    "npc_dota_hero_meepo" "-1"
+    "npc_dota_hero_pudge" "-1"
+    "npc_dota_hero_lina" "-1"
+    "npc_dota_hero_zuus" "-1"
+    "npc_dota_hero_axe" "-1"
+    "npc_dota_hero_techies" "-1"
+    "npc_dota_hero_bloodseeker" "-1"
+    "npc_dota_hero_dragon_knight" "-1"
+    // "npc_dota_hero_earthshaker" "-1"
+    // "npc_dota_hero_warlock" "-1"
+    "npc_dota_hero_undying" "-1"
+    // "npc_dota_hero_life_stealer" "-1"
+}

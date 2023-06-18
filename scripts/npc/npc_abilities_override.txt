@@ -1,0 +1,135 @@
+// Dota Heroes File
+"DOTAAbilities"
+{
+	//	2019.8.14
+	//	"Version"		"1.0"
+
+	// "item_courier"			"REMOVE"	//信使
+	"item_bottle"				"REMOVE"	//魔瓶
+	"item_clarity"				"REMOVE"	//回蓝药
+	"item_dust"					"REMOVE"	//显影之尘
+	"item_enchanted_mango"		"REMOVE"	//芒果
+	"item_faerie_fire"			"REMOVE"	//仙草
+	"item_flying_courier"		"REMOVE"	//飞行信使
+	"item_flask"				"REMOVE"	//回血药
+	"item_magic_stick"			"REMOVE"	//魔棒
+	"item_magic_wand"			"REMOVE"	//大魔棒
+	"item_smoke_of_deceit"		"REMOVE"	//诡计之雾
+	"item_tango"				"REMOVE"	//吃树
+	"item_tpscroll"				"REMOVE"	//TP
+	"item_tome_of_knowledge"	"REMOVE"	//经验书
+	"item_infused_raindrop"		"REMOVE"	//凝魂之泪
+
+	"item_gauntlets"			"REMOVE"	//力量手套
+	"item_slippers"				"REMOVE"	//敏捷便鞋
+	"item_mantle"				"REMOVE"	//智力斗篷
+	"item_circlet"				"REMOVE"	//圆环
+	"item_bracer"				"REMOVE"	//护腕
+	"item_wraith_band"			"REMOVE"	//怨灵系带
+	"item_null_talisman"		"REMOVE"	//空灵挂件
+	"item_ring_of_protection"	"REMOVE"	//守护指环
+	"item_ring_of_basilius"		"REMOVE"	//王者之戒
+	"item_branches"				"REMOVE"	//树
+	"item_belt_of_strength"		"REMOVE"	//力量腰带
+	"item_robe"					"REMOVE"	//法师长袍
+	"item_boots_of_elves"		"REMOVE"	//精灵布袋
+
+	"item_holy_locket"			"REMOVE"	//圣洁吊坠
+	"item_helm_of_the_dominator""REMOVE"	//支配头盔
+	"item_power_treads"			"REMOVE"	//原版动力鞋
+	"item_ultimate_scepter"		"REMOVE"	//阿哈利姆神杖
+	"item_ultimate_scepter_2"	"REMOVE"	//阿哈利姆的福佑
+	"item_pipe"					"REMOVE"	//原版洞察烟斗
+	"item_veil_of_discord"		"REMOVE"	//原版纷争面纱
+	"item_medallion_of_courage"	"REMOVE"	//勇气勋章
+	"item_cyclone"				"REMOVE"	//风杖
+	"item_urn_of_shadows"		"REMOVE"	//骨灰
+	"item_spirit_vessel"		"REMOVE"	//大骨灰
+	"item_ancient_janggo"		"REMOVE"	//战鼓
+	"item_solar_crest"			"REMOVE"	//炎阳纹章
+	"item_tranquil_boots"		"REMOVE"	//绿鞋
+	"item_ring_of_basilius"		"REMOVE"	//王者之戒
+	"item_necronomicon"			"REMOVE"	//死灵书
+	"item_meteor_hammer"		"REMOVE"	//陨星锤
+	"item_headdress"			"REMOVE"	//回复头巾
+	"item_force_staff"			"REMOVE"	//推推棒
+	"item_hand_of_midas"		"REMOVE"	//点金
+	"item_armlet"				"REMOVE"	//臂章
+	"item_helm_of_the_dominator""REMOVE"	//支配头盔
+	"item_buckler"				"REMOVE"	//玄冥盾
+	"item_mask_of_madness"		"REMOVE"	//疯脸
+	"item_maelstrom"			"REMOVE"	//电锤
+	// "item_satanic"				"REMOVE"	//撒旦
+	"item_invis_sword"			"REMOVE"	//隐刀
+	"item_silver_edge"			"REMOVE"	//白银之锋
+	"item_bfury"				"REMOVE"	//狂战斧
+	"item_radiance"				"REMOVE"	//辉耀
+	"item_basher"				"REMOVE"	//晕锤
+	"item_glimmer_cape"			"REMOVE"	//微光披风
+	"item_bloodstone"			"REMOVE"	//血精石
+	"item_sphere"				"REMOVE"	//林肯法球
+	"item_aeon_disk"			"REMOVE"	//永恒之盘
+	"item_aether_lens"			"REMOVE"	//以太之镜
+	"item_lotus_orb"			"REMOVE"	//莲花
+	"item_soul_booster"			"REMOVE"	//镇魂石
+	"item_vladmir"				"REMOVE"	//祭品
+	"item_heavens_halberd"		"REMOVE"	//天堂
+	"item_shivas_guard"			"REMOVE"	//希瓦的守护
+	"item_mjollnir"				"REMOVE"	//大电锤
+	// "item_rapier"				"REMOVE"	//圣剑
+	"item_ethereal_blade"		"REMOVE"	//虚灵
+	"item_sheepstick"			"REMOVE"	//羊刀
+	"item_hurricane_pike"		"REMOVE"	//大推推
+	"item_kaya_and_sange"		"REMOVE"	//散慧对剑
+	"item_yasha_and_kaya"		"REMOVE"	//慧夜对剑
+	"tem_sange_and_yasha"		"REMOVE"	//散夜对剑
+	"item_yashai"				"REMOVE"	//夜叉
+	"item_sange"				"REMOVE"	//散华
+	"item_manta"				"REMOVE"	//分身斧
+	"item_echo_sabre"			"REMOVE"	//回音战刃
+	"item_skadi"				"REMOVE"	//斯嘉蒂之眼
+	"item_diffusal_blade"		"REMOVE"	//净魂之刃
+	"item_soul_ring"			"REMOVE"	//灵魂之戒
+	"item_travel_boots_1"		"REMOVE"	//远行鞋
+	"item_travel_boots_2"		"REMOVE"	//远行鞋
+	"item_abyssal_blade"		"REMOVE"	//大晕锤 深渊之刃
+
+	//基础
+	"item_boots"				"REMOVE"	//速度之靴
+	"item_phase_boots"			"REMOVE"	//原版相位鞋
+	"item_arcane_boots"			"REMOVE"	//原版奥术鞋
+	// "item_gloves"				"REMOVE"	//加速手套
+	"item_sobi_mask"			"REMOVE"	//贤者的面具
+	"item_ring_of_regen"		"REMOVE"	//回复戒指
+	"item_wind_lace"			"REMOVE"	//风灵之纹
+	"item_quarterstaff"			"REMOVE"	//短棍
+	"item_claymore"				"REMOVE"	//大剑
+	"item_blades_of_attack"		"REMOVE"	//攻击之爪
+	"item_ogre_axe"				"REMOVE"	//食人魔之斧
+	"item_blade_of_alacrity"	"REMOVE"	//欢欣之刃
+	"item_staff_of_wizardry"	"REMOVE"	//魔力法杖
+	"item_energy_booster"		"REMOVE"	//能量之球
+	"item_vitality_booster"		"REMOVE"	//活力之球
+	// "item_broadsword"			"REMOVE"	//阔剑
+	"item_helm_of_iron_will"	"REMOVE"	//铁意头盔
+	"item_javelin"				"REMOVE"	//标枪
+	"item_dragon_lance"			"REMOVE"	//魔龙枪
+	"item_orb_of_venom"			"REMOVE"	//淬毒之珠
+	"item_lesser_crit"		"REMOVE"	//原版水晶剑
+	"item_oblivion_staff"		"REMOVE"	//原版空明杖
+	"item_hood_of_defiance"		"REMOVE"	//原版挑战头巾
+	"item_bloodthorn"			"REMOVE"	//血棘
+	"item_heart"				"REMOVE"	//龙心
+	"item_mekansm"				"REMOVE"	//梅肯
+
+	"item_witch_blade"			"REMOVE"	//巫师之刃
+	"item_eternal_shroud"		"REMOVE"	//永世法衣
+	"item_overwhelming_blink"	"REMOVE"	//力量跳刀
+	"item_arcane_blink"			"REMOVE"	//智力跳刀
+	"item_swift_blink"			"REMOVE"	//敏捷跳刀
+	"item_mage_slayer"			"REMOVE"	//法师克星
+	"item_gungir"				"REMOVE"	//缚灵索
+	"item_wind_waker"			"REMOVE"	//大风杖
+	"item_orb_of_corrosion"		"REMOVE"	//大毒球
+	"item_falcon_blade"			"REMOVE"	//猎鹰战刃
+}
