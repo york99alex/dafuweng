@@ -1,20 +1,12 @@
-# 链接/学习视频：
-
-- [【Dota2】游廊地图制作教程-新手项01期 如何下载游廊地图编辑器和上传地图_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Qc411J76i/)
-- [彩紫睨羽的个人空间_哔哩哔哩_bilibili](https://space.bilibili.com/345688919/video?tid=0&pn=4&keyword=&order=pubdate)
-- [Dota 2 创意工坊工具集 - Valve Developer Community (valvesoftware.com)](https://developer.valvesoftware.com/w/index.php?title=Dota_2_Workshop_Tools&uselang=zh)
-- [Introduction | ModDota](https://moddota.com/)
-  - [API | ModDota](https://moddota.com/api/#!/vscripts)
-
-- 
-
 # 目录
 
 
 
 # 编辑器
 
-DLC，Workshop Tools DLC<img src="https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/06/18/11-00-54-5254c4d3daf0e32b8b2692f2b1076438-image-20230618110054406-f57761.png" alt="image-20230618110054406" style="zoom:50%;" />
+DLC，Workshop Tools DLC
+
+<img src="https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/06/18/11-00-54-5254c4d3daf0e32b8b2692f2b1076438-image-20230618110054406-f57761.png" alt="image-20230618110054406" style="zoom:50%;" />
 
 
 
@@ -30,6 +22,15 @@ DLC，Workshop Tools DLC<img src="https://raw.githubusercontent.com/york99alex/P
 #### 打开地图
 
 快捷键F9 run map打开地图，第一次要build。
+
+
+
+## VConsole2
+
+控制台
+
+- script_reload是重新载入lua代码
+- clear清屏
 
 
 
@@ -57,11 +58,57 @@ scripts\npc
 
 
 
+# Lua
+
+数据类型:
+
+- nil
+- boolean
+
+- number
+- string
+- table可以是数组array也可以是map键值对
+
+function：c或lua编写的代码
+
+require(“hello”) --引用hello.lua，默认同目录
+
+lua中.点号是其某个属性/函数，:冒号是调用函数。
+
+- self是本身
+  https://zhuanlan.zhihu.com/p/115159195?utm_id=0 
+
+
+
+LinkLuaModifier 可在技能定义处绑定修饰器
+
+
+
+
+
+# 本地化
+
+addon_schinese.txt 是本地化文件，可以修改技能描述等。
+ Lore是传记描述
+ Note是技能补充描述 Note0 Note1按住alt时技能额外显示的内容
+ npc_abilities_custom.txt中定义特殊值，再在本地化文件中用%%调用
+
 
 
 # 附注
 
+## 链接/学习视频：
 
+- [【Dota2】游廊地图制作教程-新手项01期 如何下载游廊地图编辑器和上传地图_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Qc411J76i/)
+- [彩紫睨羽的个人空间_哔哩哔哩_bilibili](https://space.bilibili.com/345688919/video?tid=0&pn=4&keyword=&order=pubdate)
+- [Dota 2 创意工坊工具集 - Valve Developer Community (valvesoftware.com)](https://developer.valvesoftware.com/w/index.php?title=Dota_2_Workshop_Tools&uselang=zh)
+- [Introduction | ModDota](https://moddota.com/)
+  - [API | ModDota](https://moddota.com/api/#!/vscripts)
+
+- 一些定义函数的仓库
+   https://github.com/ModDota/API/blob/master/examples/vscript/declarations/dota-api.d.ts
+
+- 
 
 ## 文件目录/路径
 
@@ -74,6 +121,8 @@ scripts\npc
       - ..项目名
         - \scripts  技能
           - \npc 
+        - \resource 
+          - \addon_schinese.txt  本地化中文文件
   - \game  编译后文件，lua代码
   - 
 
@@ -119,6 +168,8 @@ scripts\npc
 - 领地buff不可驱散, 目前Key失效暂时注释
 
   - // "SpellDispellableType"		"SPELL_DISPELLABLE_NO_STRONG"	//是否可驱散
+
+- 蛇谷绑人生效?
 
 
 
