@@ -920,8 +920,9 @@ function GMManager:processRoll(tabData)
 	----删除操作
 	local tabOprt = self:checkOprt(tabData, true)
 
-	-- nNum1 = 3
-	-- nNum2 = 3
+	----测试
+	nNum1 = 2
+	nNum2 = 4
 
 	----广播玩家roll点操作
 	tabOprt.nNum1 = nNum1

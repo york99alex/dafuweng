@@ -49,12 +49,12 @@ scripts\npc
 
 定义技能的定义类型: 
 
-- 数据驱动类: 继承或者修改已有技能
+- 数据驱动类: 继承或者修改已有技能	`"BaseClass"					"ability_datadriven"`
 - Lua脚本类: 在技能定义中调用Lua函数, 可以创造更有趣的技能
 
-```
 
-```
+
+
 
 
 
@@ -105,10 +105,10 @@ addon_schinese.txt 是本地化文件，可以修改技能描述等。
 - [Introduction | ModDota](https://moddota.com/)
   - [API | ModDota](https://moddota.com/api/#!/vscripts)
 
-- 一些定义函数的仓库
+- 一些定义DOTA函数的仓库
    https://github.com/ModDota/API/blob/master/examples/vscript/declarations/dota-api.d.ts
 
-- 
+- DOTA2技能Lua库 https://github.com/vulkantsk/SpellLibraryLua
 
 ## 文件目录/路径
 
@@ -151,13 +151,13 @@ addon_schinese.txt 是本地化文件，可以修改技能描述等。
 
 - 玲珑心
 
-- 斧王转
+- ~~斧王转~~
 
 - 斧王买地
 
 - 宙斯蓝量
 
-- 米波层数
+- ~~米波层数~~
 
   - CLocalize::FindSafe failed to localize: #DOTA_Tooltip_modifier_meepo_ransack_onatk
 
@@ -171,6 +171,14 @@ addon_schinese.txt 是本地化文件，可以修改技能描述等。
 
 - 蛇谷绑人生效?
 
+- 所有数据驱动调用的GetSpecialValueFor得不到数值, 可以通过local数组配合获取技能等级GetLevel()
+
+- ~~米波洗劫技能描述~~
+
+- ~~斧王螺旋技能描述~~
+
+- 
+
 
 
 
@@ -179,7 +187,11 @@ addon_schinese.txt 是本地化文件，可以修改技能描述等。
 
 - F:\SteamLibrary\steamapps\common\dota 2 beta\game\dota_addons\dafuweng\scripts\vscripts\modifiers\modifier_fix_damage.lua
   - local magicalArmor = self:Script_GetMagicalArmorValue()
-- 
+  
+-   测试开局野怪
+
+  ​	nNum1 = 2
+  ​	nNum2 = 4
 
 
 

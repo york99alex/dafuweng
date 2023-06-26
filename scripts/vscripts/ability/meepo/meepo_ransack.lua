@@ -5,12 +5,6 @@ function onAblt_meepo_ransack(keys)
         return
     end
 
-    print("===============")
-    print("keys:",keys)
-    print("oPlayer:",oPlayer)
-    print("oPlayer.m_eHero:",oPlayer.m_eHero)
-    print("===============")
-
     function containsString(array, searchString)
         for i, value in ipairs(array) do
             if value:GetName() == searchString then
@@ -22,14 +16,11 @@ function onAblt_meepo_ransack(keys)
 
     ----叠加buff
     local oBuff = oPlayer.m_eHero:FindAllModifiers()
-    print("===============")
-    print("oBuff:",oBuff)
     for i, value in ipairs(oBuff) do
         print(i,value:GetName())
     end
-    print("===============")
-    print("contain:",containsString(oBuff, "modifier_meepo_ransack"))
     local oIndex = containsString(oBuff, "modifier_meepo_ransack")
+    local addsh = {1,2,3}
     if oIndex == 0 then
         local oAblt = oPlayer.m_eHero:FindAbilityByName(keys.ability:GetAbilityName())
         if not oAblt then
@@ -38,11 +29,7 @@ function onAblt_meepo_ransack(keys)
         oBuff = oAblt:ApplyDataDrivenModifier(oPlayer.m_eHero, oPlayer.m_eHero, "modifier_meepo_ransack", {})
         oBuff:SetStackCount(1)
     else
-        local nAdd = keys.ability:GetSpecialValueFor("addsh") + oBuff[oIndex]:GetStackCount()
-        print("===============")
-        print("oldgetstack",oBuff[oIndex]:GetStackCount())
-        print("newsetstack",nAdd)
-        print("===============")
-        oBuff[oIndex]:SetStackCount(nAdd+1)
+        local nAdd = addsh[keys.ability:GetLevel()] + oBuff[oIndex]:GetStackCount()
+        oBuff[oIndex]:SetStackCount(nAdd)
     end
 end

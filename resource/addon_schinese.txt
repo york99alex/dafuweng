@@ -799,6 +799,13 @@
 		"DOTA_Tooltip_Modifier_luaAbility_axe_battle_hunger"						"战斗畏惧"
         "DOTA_Tooltip_Modifier_luaAbility_axe_battle_hunger_Description"			"持续 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_NIGHT_VISION%</font> 回合：降低 <font color='#FF0000'>%dMODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE%%%</font> 的攻击力，回合开始时受到 <font color='#FF0000'>%dMODIFIER_PROPERTY_BONUS_DAY_VISION%</font> 点魔法伤害，"
 
+		"DOTA_Tooltip_ability_axe_counter_helix"					"反击螺旋"
+		"DOTA_Tooltip_ability_axe_counter_helix_Description"		"受到攻击时，斧王有0.15/0.20/0.25几率做出螺旋反击，对半径300范围内的所有敌方单位造成140点纯粹伤害。(请忽视下面的技能数值)"
+		"DOTA_Tooltip_ability_axe_counter_helix_Lore"				"我买了个小风车~呼呼呼"
+		"DOTA_Tooltip_ability_axe_counter_helix_chance"				"触发概率 :"
+		"DOTA_Tooltip_ability_axe_counter_helix_radius"					"半径 :"
+		"DOTA_Tooltip_ability_axe_counter_helix_damage2"					"伤害 :"
+
 		"DOTA_Tooltip_ability_LuaAbility_BZ_techies_land_mines"					"地雷"
 		"DOTA_Tooltip_ability_LuaAbility_BZ_techies_land_mines_Description"		"<font color='#00FF00'>自动</font> 埋布地雷在自身区域内，敌人驻足该区域将引爆，对该区域的英雄和兵卒造成伤害。"
 		"DOTA_Tooltip_ability_LuaAbility_BZ_techies_land_mines_Lore"				"起重港的噩梦！"
