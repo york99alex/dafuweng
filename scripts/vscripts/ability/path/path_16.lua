@@ -91,7 +91,7 @@ function modifier_path_16_L1:OnCreated(kv)
     self.tEventID = {}
 
     ----提升英雄魔法上限
-    self.oPlayer:setManaMax(self.oPlayer.m_eHero:GetMaxMana() + self.shangxian)
+    self.oPlayer:setMaxMana(self.oPlayer.m_eHero:GetMaxMana() + self.shangxian)
     ----监听玩家回合回魔
     table.insert(self.tEventID, EventManager:register("Event_HeroHuiMoByRound", function(tabEvent)
         if self.oPlayer ~= tabEvent.oPlayer then

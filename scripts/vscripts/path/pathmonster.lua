@@ -325,9 +325,10 @@ function PathMonster:onEvent_entityKilled(keys)
             local eAtker = EntIndexToHScript(keys.entindex_attacker)
             if not NULL(eAtker) then
                 local nExp = self:getMonsterExp(v:GetUnitName())
-
                 ----增加经验
                 local player = PlayerManager:getPlayer(eAtker:GetPlayerOwnerID())
+                print("player: ", player)
+                PrintTable(player)
                 if not NIL(player) then
                     player:setExpAdd(nExp)
                 end

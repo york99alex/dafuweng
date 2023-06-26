@@ -1374,7 +1374,7 @@ function Player:getBuffByName(strBuffName)
 end
 
 ----设置英雄魔法上限
-function Player:setManaMax(nVal)
+function Player:setMaxMana(nVal)
 	----不能影响当前魔法值
 	local nManaCur = self.m_eHero:GetMana()
 
@@ -1866,7 +1866,7 @@ function Player:onEvent_PlayerRoundBegin(tabEvent)
 	self.nManaMaxBase = self.nManaMaxBase or 0
 	if 10 > self.nManaMaxBase then
 		self.nManaMaxBase = self.nManaMaxBase + 1
-		self:setManaMax(self.nManaMaxBase)
+		self:setMaxMana(self.nManaMaxBase)
 	end
 
 	----英雄回蓝
