@@ -521,7 +521,7 @@ function onAblt_rune_2(keys)
 end
 function onAblt_rune_2_beAtk(keys)
     local oAblt = keys.ability
-    local nChance = oAblt:GetSpecialValueFor("beatk_chance")   ----幻象被攻击概率
+    local nChance = 50   ----幻象被攻击概率
     if RandomInt(1, 100) > nChance then
         return
     end
@@ -548,7 +548,7 @@ end
 function onAblt_rune_2_atk(keys)
 
     local oAblt = keys.ability
-    local nChance = oAblt:GetSpecialValueFor("atk_chance")   ----幻象攻击概率
+    local nChance = 50   ----幻象攻击概率
     if RandomInt(1, 100) > nChance then
         return
     end
@@ -920,8 +920,10 @@ function onAblt_path_14(keys)
     end
 
     local oAblt = keys.ability
-    local nChance = oAblt:GetSpecialValueFor("chance")
-    local nTime = oAblt:GetSpecialValueFor("time")
+    local oLevel = oAblt:GetLevel()
+    local nChance = 25
+    local nTimes = {1, 1.5, 2}
+    local nTime = nTimes[oLevel]
     local strIsTriggered = DoUniqueString("IsTriggered")
 
     local function checkBZ(eBZ)
@@ -1100,15 +1102,18 @@ function onAblt_path_16(keys)
         return
     end
     local oAblt = keys.ability
-    local nHuiMoBZ = oAblt:GetSpecialValueFor("huimo_bz")
-    local nHuiMoHero = oAblt:GetSpecialValueFor("huimo")
-    local nShangXian = oAblt:GetSpecialValueFor("shangxian")
-    local nNoCDChance = oAblt:GetSpecialValueFor("no_cd_chance")
-    local nNoManaChance = oAblt:GetSpecialValueFor("no_mana_chance")
-    local nSpellAmp = oAblt:GetSpecialValueFor("spell_amp")
+    local oLevel = oAblt:GetLevel()
+    local nHuiMoBZ = 40
+    local nHuiMoHero = 1
+    -- local nShangXian = oAblt:GetSpecialValueFor("shangxian")
+    local nNoCDChances = {0, 15, 50}
+    local nNoCDChance = nNoCDChances[oLevel]
+    local nNoManaChances = {15, 30, 50}
+    local nNoManaChance = nNoManaChances[oLevel]
+    -- local nSpellAmp = oAblt:GetSpecialValueFor("spell_amp")
 
     ----提升英雄魔法上限
-    oPlayer:setManaMax(oPlayer.m_eHero:GetMaxMana() + nShangXian)
+    -- oPlayer:setManaMax(oPlayer.m_eHero:GetMaxMana() + nShangXian)
     ----监听玩家回合回魔
     EventManager:register("Event_HeroHuiMoByRound", function(tabEvent)
         if oPlayer ~= tabEvent.oPlayer then
@@ -1217,7 +1222,7 @@ function onAblt_path_17(keys)
         return
     end
     local oAblt = keys.ability
-    local nDamage = oAblt:GetSpecialValueFor("damage")
+    local nDamage = 30
 
     local function checkBZ(eBZ)
         if not NULL(eBZ) then
@@ -1427,7 +1432,9 @@ function onAblt_path_18(keys)
         return
     end
     local oAblt = keys.ability
-    local nDamage = oAblt:GetSpecialValueFor("damage")
+    local oLevel = oAblt:GetLevel()
+    local nDamages = {1000, 2000, 4000}
+    local nDamage = nDamages[oLevel]
     local typeDamage = oAblt:GetAbilityDamageType()
 
     ----石化兵卒
@@ -1548,10 +1555,49 @@ function onItem_attributes(keys)
             EventManager:unregisterByID(v)
         end
     end
-
-    local bonus_strength = keys.ability:GetSpecialValueFor("bonus_strength")
-    local bonus_agility = keys.ability:GetSpecialValueFor("bonus_agility")
-    local bonus_intellect = keys.ability:GetSpecialValueFor("bonus_intellect")
+    local oName = keys.ability:GetAbilityName()
+    local strengthTable = {
+        item_ogre_axe = 10,
+        item_ultimate_orb = 10,
+        item_satanic = 25,
+        item_reaver = 25,
+        item_ultimate_scepter = 10,
+        item_nullifier = 10,
+        item_black_king_bar = 25
+    }
+    local bonus_strength,bonus_agility,bonus_intellect
+    for k, v in pairs(strengthTable) do
+        if oName == k then
+            bonus_strength = v
+        end
+    end
+    local agilityTable = {
+        item_blade_of_alacrity = 10,
+        item_ultimate_orb = 10,
+        item_eagle = 25,
+        item_butterfly = 35,
+        item_ultimate_scepter = 10,
+        item_nullifier = 10
+    }
+    local bonus_strength,bonus_agility
+    for k, v in pairs(agilityTable) do
+        if oName == k then
+            bonus_agility = v
+        end
+    end
+    local intellectTable = {
+        item_blade_of_alacrity = 10,
+        item_ultimate_orb = 10,
+        item_eagle = 25,
+        item_butterfly = 35,
+        item_ultimate_scepter = 10,
+        item_nullifier = 10
+    }
+    for k, v in pairs(agilityTable) do
+        if oName == k then
+            bonus_agility = v
+        end
+    end
 
     if keys.caster.m_bBZ then
         keys.caster:ModifyStrength(bonus_strength)
@@ -1591,6 +1637,7 @@ function onItem_huiMo(keys)
     end
 
     local tEventID = {}
+    local itemName = keys.ability:GetAbilityName()
     local function unregister()
         for _, v in pairs(tEventID) do
             EventManager:unregisterByID(v)
@@ -1599,8 +1646,29 @@ function onItem_huiMo(keys)
 
     if keys.caster:IsRealHero() then
         ----英雄装备
-        local nRegenHero = keys.ability:GetSpecialValueFor("bonus_mana_regen_hero")
-        local nRound = keys.ability:GetSpecialValueFor("bonus_mana_regen_hero_round")
+        local nRegenHero
+        if itemName == "item_refresher" then
+            nRegenHero = 2
+        else 
+            nRegenHero = 1
+        end
+        local nRound 
+        local nRoundTable = {
+            item_sobi_mask = 3,
+            item_void_stone = 1,
+            item_oblivion_staff_bg = 2,
+            item_pers = 1,
+            item_orchid = 2,
+            item_bloodthorn = 2,
+            item_refresher = 1,
+            item_pipe_lua = 2,
+            item_kaya = 1
+        }
+        for k, v in pairs(nRoundTable) do
+            if itemName == k then
+                nRegenHero = v
+            end
+        end
         local nRoundCD = nRound
         table.insert(tEventID, EventManager:register("Event_HeroHuiMoByRound", function(tabEvent)
             if keys.caster == tabEvent.oPlayer.m_eHero then
@@ -1613,7 +1681,23 @@ function onItem_huiMo(keys)
         end))
     else
         ----兵卒装备
-        local nRegenBZ = keys.ability:GetSpecialValueFor("bonus_mana_regen_bz")
+        local nRegenBZ
+        local nRengenBZTable = {
+            item_sobi_mask = 10,
+            item_void_stone = 40,
+            item_oblivion_staff_bg = 20,
+            item_pers = 40,
+            item_orchid = 20,
+            item_bloodthorn = 20,
+            item_refresher = 80,
+            item_pipe_lua = 40,
+            item_kaya = 60
+        }
+        for k, v in pairs(nRengenBZTable) do
+            if itemName == k then
+                nRegenBZ = v
+            end
+        end
         table.insert(tEventID, EventManager:register("Event_BZHuiMo", function(tabEvent)
             if keys.caster == tabEvent.eBz then
                 tabEvent.nHuiMoSum = tabEvent.getBaseHuiMo() * nRegenBZ * 0.01 + tabEvent.nHuiMoSum
@@ -1635,7 +1719,7 @@ function onItem_MaxMana(keys)
     if not keys.caster:IsRealHero() then
         return
     end
-    local nMana = keys.ability:GetSpecialValueFor("bonus_mana")
+    local nMana = 1
     if keys.State == "OnDestroy" then
         ----解除装备
         local oPlayer = PlayerManager:getPlayer(keys.caster:GetPlayerOwnerID())
@@ -1656,7 +1740,21 @@ function onItem_MaxHP(keys)
     if keys.caster:IsHero() then
         return
     end
-    local nHP = keys.ability:GetSpecialValueFor("bonus_health")
+    local itemName = keys.ability:GetAbilityName()
+    local nHP
+    local nHPTable = {
+        item_point_booster = 250,
+        item_vitality_booster = 250,
+        item_ultimate_scepter = 175,
+        item_vanguard = 250,
+        item_crimson_guard = 250,
+        item_octarine_core = 450
+    }
+    for k, v in pairs(nHPTable) do
+        if itemName == k then
+            nHP = v
+        end
+    end
     if keys.State == "OnDestroy" then
         ----解除装备
         nHP = keys.caster:GetMaxHealth() - nHP
@@ -1694,9 +1792,25 @@ function onItem_huiXue(keys)
             oAblt = keys.item
         end
     end
-
-    local nRegen = oAblt:GetSpecialValueFor("bonus_health_regen_hero")
-    local nRound = oAblt:GetSpecialValueFor("bonus_health_regen_hero_round")
+    local itemName = keys.ability:GetAbilityName()
+    local nRegen,nRound
+    local nRegenTable = {
+        item_ring_of_regen = 50,
+        item_helm_of_iron_will = 70,
+        item_ring_of_health = 100,
+        item_pers = 100,
+        item_refresher = 200,
+        item_vanguard = 140,
+        item_hood_of_defiance_bg = 160,
+        item_pipe_lua = 160,
+        item_crimson_guard = 140
+    }
+    for k, v in pairs(nRegenTable) do
+        if itemName == k then
+            nRegen = v
+        end
+    end
+    local nRound = 1
     local nRoundCD = nRound
 
     table.insert(tEventID, EventManager:register("Event_ItemHuiXueByRound", function(tabEvent)
@@ -1746,7 +1860,7 @@ function onItem_getCard(keys)
     end
 
     local oAblt = keys.ability
-
+    local itemName = keys.ability:GetAbilityName()
     ----物品技能，替换oAblt为物品
     if keys.bItemAblt then
         keys.item = keys.caster:get08ItemByName(string.sub(keys.ability:GetAbilityName(), 9))
@@ -1759,11 +1873,29 @@ function onItem_getCard(keys)
     local player = PlayerManager:getPlayer(keys.caster:GetPlayerOwnerID())
     if not player then return end
     if not player._tGetCardItem then player._tGetCardItem = {} end
+    local nCardType
+    local nCardTypeTable = {
+        item_arcane_boots_bg = 1,
+        item_ultimate_scepter = 10000,
+        item_blink = 5,
+        item_nullifier = 4,
+        item_orchid = 3,
+        item_bloodthorn = 3,
+        item_refresher = 2,
+        item_crimson_guard = 6,
+        item_blade_mail = 7,
+        item_black_king_bar = 8
+    }
+    for k, v in pairs(nCardTypeTable) do
+        if itemName == k then
+            nCardType = v
+        end
+    end
 
-    local tItem = player._tGetCardItem[oAblt:GetSpecialValueFor("card_type")]
+    local tItem = player._tGetCardItem[nCardType]
     if not tItem then
         tItem = {}
-        player._tGetCardItem[oAblt:GetSpecialValueFor("card_type")] = tItem
+        player._tGetCardItem[nCardType] = tItem
     end
 
     for i = #tItem, 1, -1 do
@@ -1796,11 +1928,11 @@ function onItem_getCard(keys)
         end
     end))
 
-    local nMax = oAblt:GetSpecialValueFor("card_count")
+    local nMax = -1
     local typeCard
 
     local function getCardCD()
-        local nGetCardCD = TESTCARD and 1 or oAblt:GetSpecialValueFor("cd_getcard")
+        local nGetCardCD = TESTCARD and 1 or 5
         ----冷却减缩
         nGetCardCD = nGetCardCD - player.m_nCDSub
         if 0 >= nGetCardCD then
@@ -1966,13 +2098,31 @@ function AbilityManager:getCardType(sCardTypeFlag, player, oAblt)
         local i = RandomInt(1, #TCard_MONSTER)
         typeCard = TCard_MONSTER[i]
     elseif sCardTypeFlag == "ITEM" then
-        typeCard = oAblt:GetSpecialValueFor("card_type")
+        local nCardType
+        local nCardTypeTable = {
+            item_arcane_boots_bg = 1,
+            item_ultimate_scepter = 10000,
+            item_blink = 5,
+            item_nullifier = 4,
+            item_orchid = 3,
+            item_bloodthorn = 3,
+            item_refresher = 2,
+            item_crimson_guard = 6,
+            item_blade_mail = 7,
+            item_black_king_bar = 8
+        }
+        for k, v in pairs(nCardTypeTable) do
+            if itemName == k then
+                nCardType = v
+            end
+        end
+        typeCard = nCardType
     end
     return typeCard
 end
 -----加打野伤害
 function onItem_atkMonster(keys)
-    local damage = keys.ability:GetSpecialValueFor("damage_bonus")
+    local damage = 50
     local function atk(params)
         if keys.ability:IsNull() then
             return true
@@ -2037,12 +2187,12 @@ function onItem_CDManaSub(keys)
         nAdd = 1
     end
 
-    local nManaSub = keys.ability:GetSpecialValueFor("mana_sub")
+    local nManaSub = 1
     if nManaSub and 0 < nManaSub then
         oPlayer:setManaSub(oPlayer.m_nManaSub + nManaSub * nAdd)
     end
 
-    local nCDSub = keys.ability:GetSpecialValueFor("cd_sub")
+    local nCDSub = 1
     if nCDSub and 0 < nCDSub then
         oPlayer:setCDSub(oPlayer.m_nCDSub + nCDSub * nAdd)
     end

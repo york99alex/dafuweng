@@ -1,39 +1,52 @@
-"AddonInfo"
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 {
-  "TeamCount" "6"
-  "maps"      "map_1x6 map_1x6_no_swap"
-  "IsPlayable"  "1"
-  "map_1x6"
-  {
-    "MaxPlayers"                    "6"
-  }
-  "map_1x6_no_swap"
-  {
-    "MaxPlayers"                    "6"
-  }
-  "map_2x3"
-  {
-    "MaxPlayers"                    "6"
-  }
-  "Default_Keys"
-    {
-        "01"
-        {
-            "Key"       "MouseLeft"
-            "Command"   "CustomGameExecuteAbility1"
-            "Name"      "Execute Ability 1"
-        }
-        "02"
-        {
-            "Key"       "A"
-            "Command"   "CustomGameTestButton"
-            "Name"      "Example"
-        }
-        "02"
-        {
-            "Key"       "S"
-            "Command"   "CustomGameTestButton"
-            "Name"      "Example"
-        }
-    }
+	TeamCount = 6
+	maps = 
+	[
+		"map_1x6",
+		"map_1x6_no_swap",
+	]
+	IsPlayable = 1
+	Default_Keys = 
+	[
+		{
+			Key = "MouseLeft"
+			Command = "CustomGameExecuteAbility1"
+			Name = "Execute Ability 1"
+		},
+		{
+			Key = "A"
+			Command = "CustomGameTestButton"
+			Name = "Example"
+		},
+	]
+	map_options = 
+	[
+		{
+			MaxPlayers = 6
+			map = "map_2x3"
+		},
+		{
+			MaxPlayers = 6
+			map = "map_1x6_no_swap"
+		},
+		{
+			MaxPlayers = 6
+			map = "map_1x6"
+		},
+	]
+	HideInTools = false
+	IsTemplate = false
+	CheckAFKPlayers = false
+	DefaultMap = "map_1x6"
+	DisableIK = false
+	EnablePickRules = false
+	EventGame = false
+	hero_picker = null
+	HeroGuidesSupported = true
+	ForceDefaultGuide = true
+	MinimalPrecache = false
+	MinPlayers = 1
+	MaxPlayers = 6
+	PenaltiesEnabled = false
 }

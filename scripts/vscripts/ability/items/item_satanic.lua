@@ -12,7 +12,7 @@ function onItem_satanic(keys)
             return
         end
         ----少于阈值触发
-        local nHeathMin = keys.caster:GetMaxHealth() * keys.ability:GetSpecialValueFor("unholy_target") * 0.01
+        local nHeathMin = keys.caster:GetMaxHealth() * 30 * 0.01
         local nHeathCur = keys.caster:GetHealth() - tEvent.damage
         if nHeathCur <= nHeathMin then
             keys.ability:StartCooldown(keys.ability:GetCooldown(keys.ability:GetLevel() - 1))

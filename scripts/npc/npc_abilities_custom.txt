@@ -896,7 +896,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"time"					"1 2 2"
+				"time"					"1 1.5 2"
 			}
 			"02"
 			{

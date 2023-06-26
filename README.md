@@ -150,6 +150,7 @@ addon_schinese.txt 是本地化文件，可以修改技能描述等。
 # bugs
 
 - 玲珑心
+  ![image-20230626171044998](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/06/26/17-10-45-1cf7fbb14ae5ff1b6ab7f09c73fe3f20-image-20230626171044998-edfb4a.png)
 
 - ~~斧王转~~
 

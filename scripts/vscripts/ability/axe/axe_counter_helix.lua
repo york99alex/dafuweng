@@ -6,7 +6,6 @@ function onAblt_axe_counter_helix(keys)
         return
     end
     local nLevel = oAblt:GetLevel()
-    local nAblt = oPlayer.m_eHero:GetAbilityByIndex(1)
     local trigger_chances = {15,20,25}
     local nChance = trigger_chances[nLevel]
     local oRandomInt = RandomInt(1, 100)

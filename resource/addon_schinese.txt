@@ -1123,7 +1123,7 @@
 		"PathBuff_14"					"缚足"
 		"PathBuffDescription_14"		"敌人经过有概率被群蛇束缚。穿行沼泽的确不是件轻松活，好在有蛇蛇们的帮助。<br>【满级效果 : 扩张】<br>作用全部己方领地。"
 		"PathBuffKey1_14"				"束缚时间 : "
-		"PathBuffVal1_14"				"1/2/2"
+		"PathBuffVal1_14"				"1/1.5/2"
 		"PathBuffKey2_14"				"束缚概率 : "
 		"PathBuffVal2_14"				"25%"
 		"DOTA_Tooltip_ability_AbilityPath_14"        "蛇沼"

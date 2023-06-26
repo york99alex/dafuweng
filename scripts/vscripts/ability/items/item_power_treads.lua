@@ -15,7 +15,7 @@ function onItem_power_treads(keys)
 
     ----装备
     keys.caster._onItem_power_treads = true
-    local nManaToSpeed = keys.ability:GetSpecialValueFor('mana_to_speed')
+    local nManaToSpeed = 10
     local nAdd = keys.caster:GetMana() * nManaToSpeed
     keys.caster:SetBaseMoveSpeed(keys.caster:GetBaseMoveSpeed() + nAdd)
 
