@@ -921,8 +921,8 @@ function GMManager:processRoll(tabData)
 	local tabOprt = self:checkOprt(tabData, true)
 
 	----测试
-	nNum1 = 2
-	nNum2 = 4
+	-- nNum1 = 2
+	-- nNum2 = 4
 
 	----广播玩家roll点操作
 	tabOprt.nNum1 = nNum1
