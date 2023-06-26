@@ -91,7 +91,7 @@ function Precache(context)
 
     print("Precache...")
 
-    local t = table.maxn(_G.PrecacheItems)
+    local t = Table_maxn(_G.PrecacheItems)
     for i = 1, t do
         if string.find(_G.PrecacheItems[i], ".vpcf") then
             PrecacheResource("particle", _G.PrecacheItems[i], context)

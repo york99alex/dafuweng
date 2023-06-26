@@ -1,0 +1,15 @@
+{
+    "Lua.diagnostics.globals": [
+        "LinkLuaModifier",
+        "LUA_MODIFIER_MOTION_NONE",
+        "ListenToGameEvent",
+        "Dynamic_Wrap",
+        "IsClient",
+        "RandomInt",
+        "ACT_DOTA_CAST_ABILITY_3",
+        "EmitSoundOn",
+        "IsServer",
+        "EntIndexToHScript",
+        "GetMapName"
+    ]
+}

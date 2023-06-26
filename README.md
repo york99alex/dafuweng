@@ -149,14 +149,12 @@ addon_schinese.txt 是本地化文件，可以修改技能描述等。
 
 # bugs
 
-- 玲珑心
-  ![image-20230626171044998](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/06/26/17-10-45-1cf7fbb14ae5ff1b6ab7f09c73fe3f20-image-20230626171044998-edfb4a.png)
+- ~~玲珑心~~ 描述有问题但,生效
+  <img src="https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/06/26/17-10-45-1cf7fbb14ae5ff1b6ab7f09c73fe3f20-image-20230626171044998-edfb4a.png" alt="image-20230626171044998" style="zoom: 50%;" />
 
 - ~~斧王转~~
 
-- 斧王买地
-
-- 宙斯蓝量
+- ~~宙斯蓝量~~
 
 - ~~米波层数~~
 
@@ -166,19 +164,27 @@ addon_schinese.txt 是本地化文件，可以修改技能描述等。
 
   攻击时层数buff加给了 ransack
 
-- 领地buff不可驱散, 目前Key失效暂时注释
-
-  - // "SpellDispellableType"		"SPELL_DISPELLABLE_NO_STRONG"	//是否可驱散
-
-- 蛇谷绑人生效?
+- ~~蛇谷绑人生效~~
 
 - 所有数据驱动调用的GetSpecialValueFor得不到数值, 可以通过local数组配合获取技能等级GetLevel()
+
+  - 大概修好了
 
 - ~~米波洗劫技能描述~~
 
 - ~~斧王螺旋技能描述~~
 
-- 
+- 经验共享问题和数值问题
+
+- ~~装备额外回血~~
+
+- ~~装备额外蓝量~~
+
+- ~~装备额外回蓝~~
+
+- 某种未知原因导致无法弹窗等操作,买不了地攻不了城
+
+- 结束清算有问题
 
 
 
