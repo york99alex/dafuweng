@@ -10,6 +10,12 @@
         "EmitSoundOn",
         "IsServer",
         "EntIndexToHScript",
-        "GetMapName"
+        "GetMapName",
+        "LoadKeyValues",
+        "GameRules",
+        "CustomGameEventManager",
+        "CustomNetTableManager",
+        "DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD",
+        "DoUniqueString"
     ]
 }
