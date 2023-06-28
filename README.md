@@ -431,6 +431,8 @@ addon_schinese.txt 是本地化文件，可以修改技能描述等。
 
   ​	nNum1 = 2
   ​	nNum2 = 4
+  
+- 
 
 
 
