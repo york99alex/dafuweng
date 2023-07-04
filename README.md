@@ -83,7 +83,7 @@ DLC，Workshop Tools DLC
   - clear清屏
   - script_reload是重新载入lua代码
   - dota_launch_custom_game [项目名] [地图名] 启动项目进入游戏
-  - 
+  - script_help2  打印所有api接口
 
 
 ## 技能
@@ -199,6 +199,8 @@ scripts\npc
 
 
 
+
+
 # Lua
 
 DOTA中只是用了Lua语言的一部分特点.
@@ -230,9 +232,9 @@ lua中.点号是其某个属性/函数，:冒号是调用函数。
 - self是本身
   https://zhuanlan.zhihu.com/p/115159195?utm_id=0 
 
-
-
-LinkLuaModifier 可在技能定义处绑定修饰器
+==如果通过KV调用Lua函数, 则传入方法的参数为table封装包含caster, target, ability==
+例如: keys.caster
+而纯Lua代码, 是使用self:GetCaster(), 调用函数向系统询问
 
 
 
@@ -302,7 +304,120 @@ end
         LUA_MODIFIER_MOTION_VERTICAL	2	在垂直方向上移动
         LUA_MODIFIER_MOTION_BOTH	3	在水平和垂直上都移动
         LUA_MODIFIER_INVALID	4	
-      - 
+- GetOrigin()  获取位置
+- GetCaster()  获取施法者
+- GetTeamNumber()  获取队伍ID
+- EntIndexToHScript  游戏里面所有的单位每个人都有一个id来记录他, 这个函数通过这个id来获取到这个单位本身，也就是lua技能中常用的caster
+- Dynamic_Wrap()
+
+
+
+
+
+#### API
+
+![image-20230704104746959](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/07/04/10-47-47-5aa1fcf0b1d8004f3f6b3d574fb14b02-image-20230704104746959-124d29.png)
+
+
+
+## 预加载
+
+对于特效，需要在技能定义中预载入。
+lua定义的技能在kv编辑器里有预载入键值。
+其值填写只用从particle开始
+
+lua定义技能时self是使用技能的实例，可以通过self: 调用函数
+数据驱动时不能使用self: 调用方法，而是self.caster /target 来获取其参数值，self是一个keys的table，可以print出来看有什么东西。
+
+预加载，分为全局和部分英雄加载，全局预加载内容越多地图选人前加载越慢。
+建议将不是全局调用的特效/音频放在英雄npc_hero里预加载
+
+
+
+## 定时器功能
+
+目的: 制作持续伤害, 延时伤害, 控制等
+注意: 定时器的触发是在时间到后才会触发第一次
+
+通过KV编辑时, 定时器是属于修饰器里的事件 `OnIntervalThink`, 而非直接技能的事件
+
+
+
+Lua实现:
+
+![image-20230703164427009](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/07/03/16-44-27-4b089c77bec7b2d369e946f73cab4495-image-20230703164427009-44de12.png)
+
+1. 链接修饰器
+
+2. 给目标添加修饰器
+
+3. 注册修饰器, 定义OnCreated函数(启动计时器)
+
+   ```lua
+   --设置定时器, 参数为间隔时间
+   self:StartIntervalThink(1)
+   --定时器间隔调用该函数
+   self:OnIntervalThink()
+   ```
+
+   
+
+## 范围效果
+
+对多个目标的操作, 实现方法可以是范围搜索, 线性搜索或者使用Lua脚本搜索
+
+`FindUnitsInRadius`(team: [DOTATeam_t](https://moddota.com/api/#!/vscripts/DOTATeam_t), location: [Vector](https://moddota.com/api/#!/vscripts/Vector), cacheUnit: [CBaseEntity](https://moddota.com/api/#!/vscripts/CBaseEntity) | nil, radius: float, teamFilter: [DOTA_UNIT_TARGET_TEAM](https://moddota.com/api/#!/vscripts/DOTA_UNIT_TARGET_TEAM), typeFilter: [DOTA_UNIT_TARGET_TYPE](https://moddota.com/api/#!/vscripts/DOTA_UNIT_TARGET_TYPE), flagFilter: [DOTA_UNIT_TARGET_FLAGS](https://moddota.com/api/#!/vscripts/DOTA_UNIT_TARGET_FLAGS), order: [FindOrder](https://moddota.com/api/#!/vscripts/FindOrder), canGrowCache: bool): [[CDOTA_BaseNPC](https://moddota.com/api/#!/vscripts/CDOTA_BaseNPC)]
+
+全局函数Finds the units in a given radius with the given flags. 
+
+FindOrder:
+
+FIND_ANY_ORDER = 0	(填0的话较合适)
+
+FIND_CLOSEST = 1	(从最近开始)
+
+FIND_FARTHEST = 2	(从最远开始)
+
+
+
+## 循环
+
+break退出当前循环
+
+Lua没有continue
+
+Lua实现宙斯闪电链[【彩紫睨羽】《DOTA2》编辑器进阶篇-第19期--跟踪投射物下_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1bJ411K7KX/)
+
+
+
+## 替身(马甲)
+
+非指向性技能, 需要一个"点位置"来实现技能
+
+例如,炸弹人地雷,电狗草莓
+
+
+
+# 机制
+
+[Game Events](https://moddota.com/api/#!/events)
+
+Dynamic_Wrap(context: table, name: string)
+
+A function to re-lookup a function by name every time.
+
+
+
+# UI
+
+
+
+## panorama
+
+Panorama 用户界面，用来在您的游戏模式中自定义界面
+以类似编写html网页的形式来编写游戏UI
+
+[官方开发文档-Panorama](https://developer.valvesoftware.com/wiki/Dota_2_Workshop_Tools/Panorama:zh-cn)
 
 
 
@@ -314,6 +429,8 @@ addon_schinese.txt 是本地化文件，可以修改技能描述等。
  Lore是传记描述
  Note是技能补充描述 Note0 Note1按住alt时技能额外显示的内容
  npc_abilities_custom.txt中定义特殊值，再在本地化文件中用%%调用
+
+
 
 
 
