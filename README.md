@@ -334,12 +334,12 @@ lua定义技能时self是使用技能的实例，可以通过self: 调用函数
 
 
 
-## 定时器功能
+## 计时器功能
 
 目的: 制作持续伤害, 延时伤害, 控制等
-注意: 定时器的触发是在时间到后才会触发第一次
+注意: 计时器的触发是在时间到后才会触发第一次
 
-通过KV编辑时, 定时器是属于修饰器里的事件 `OnIntervalThink`, 而非直接技能的事件
+通过KV编辑时, 计时器是属于修饰器里的事件 `OnIntervalThink`, 而非直接技能的事件
 
 
 
@@ -432,6 +432,44 @@ addon_schinese.txt 是本地化文件，可以修改技能描述等。
 
 
 
+# TS+X-template
+
+Nodejs + TypeScritp 
+
+编辑器原版开发环境:
+前端: javascript + css(阉割版) + xml
+后端: lua KV数据文件
+
+X-template:
+前端: react基于javascript的一个优秀库scss(css升级版) + 基于webpack babel的统一打包项目
+后端: typescripttolua 将ts代码编译成lua
+
+## Node
+
+[NPM第三方库](https://www.npmjs.com/)
+
+
+
+## X-template
+
+1. `yarn dev`，开始你的开发
+2. 如果你要启动你的项目，你可以使用指令`yarn launch map_name`启动游戏并载入地图，或者使用`yarn launch`只是启动工具而不载入地图，之后再在控制台使用指令载入地图。
+
+
+
+### 模板目录
+
+- .vscode	控制vs显示输入
+- content  客户端文件夹, 每个玩家都有
+  - src
+    - tsconfig.json  关于客户端文件ts语言的设置
+- excels  编辑项目中所用到的KV,会自动转换成game/scripts下的txt
+- game  服务端文件
+  - game_mode.ts  游戏的入口
+- scritps  xtemplate所使用的文件, 与游戏项目无关,可忽略
+
+
+
 
 
 # 附注
@@ -448,6 +486,8 @@ addon_schinese.txt 是本地化文件，可以修改技能描述等。
    https://github.com/ModDota/API/blob/master/examples/vscript/declarations/dota-api.d.ts
 
 - DOTA2技能Lua库 https://github.com/vulkantsk/SpellLibraryLua
+
+- [node安装_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1n44y1e7B4?p=1)
 
 ## ==文件目录/路径==
 
@@ -559,6 +599,8 @@ addon_schinese.txt 是本地化文件，可以修改技能描述等。
 
 - 结束清算有问题
 
+- 亡国清算如果超时未完成倒计时会进入负数
+
 
 
 
@@ -573,9 +615,63 @@ addon_schinese.txt 是本地化文件，可以修改技能描述等。
   ​	nNum1 = 2
   ​	nNum2 = 4
   
-- 
+- if nGold > 0 then
+
+  ​    nGold = nGold - 1000
+
+    end
 
 
 
 
+# 思路
 
+- addon_game_mode : Precache预加载和初始化
+  - 初始化时调用gmmanager并初始化GMManager:init, 设置所有游戏规则
+    - ==self:registerEvent()	注册事件==
+    - ==self:registerMessage()  注册消息==
+    - ==self:registerThink()  注册计时器==
+    -   Service:init(bReload)  氪金
+    -   Filters:init(bReload)  过滤器
+    -   Attributes:init(bReload)  属性值
+    -   ParaAdjuster:Init()  平衡属性值
+    -   PlayerManager:init(bReload)  玩家管理模块
+      - Player	玩家类
+    -   PathManager:init(bReload)  路径管理模块
+      Entities:FindAllByClassname('path_corner')
+    -   AbilityManager:init(bReload)  lua技能模块
+    -   CardManager:init(bReload)  卡牌管理模块
+    -   Trade.init(bReload)  交易模块
+    -   Auction.init(bReload)  拍卖
+    -   DeathClearing.init(bReload)  死亡清算
+    -   SkinManager:init(bReload)  皮肤管理模块
+    -   ItemManager:init(bReload)  装备管理
+    -   Selection:init(bReload)  选择器(升级兵卒等)
+    -   Supply:init(bReload)  补给环节(自选装备)
+      EventManager:register("Event_UpdateRound", Supply.onEvent_UpdateRound, Supply)
+      EventManager:register("Event_PlayerDie", Supply.onEvent_PlayerDie, Supply, 10000)
+    -   HeroSelection:init(bReload)  选择英雄及玩家轮序
+    -   GSManager:init(bReload)  游戏状态管理
+
+## 亡国清算逻辑
+
+所有修改的金币时检查是否没钱了:
+
+```lua
+	if (lastnGold >= 0) ~= (nGold >= 0) then
+		print("self.m_nPlayerID:",self.m_nPlayerID)
+		EventManager:fireEvent(DeathClearing.EvtID.Event_TO_SendDeathClearing, { nPlayerID = self.m_nPlayerID })
+	end
+```
+
+是的话触发事件Event_TO_SendDeathClearing, 该事件在初始化时注册
+
+
+
+![image-20230705213809885](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/07/05/21-38-10-a90a318a18a4c1d6c5dca9fd62c8adee-image-20230705213809885-eff308.png)
+
+![image-20230705213828000](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/07/05/21-38-28-981fca2a549ac484af04e8f44fa51b74-image-20230705213828000-05b5dd.png)
+
+
+
+# 地图
