@@ -84,6 +84,9 @@ DLC，Workshop Tools DLC
   - script_reload是重新载入lua代码
   - dota_launch_custom_game [项目名] [地图名] 启动项目进入游戏
   - script_help2  打印所有api接口
+  - dota_create_unit npc_dota_roshan enemy
+    dota_create_unit npc_dota_hero_axe enemy
+  - dota_kill_unit_by_name npc_dota_roshan
 
 
 ## 技能
@@ -448,6 +451,10 @@ X-template:
 
 [NPM第三方库](https://www.npmjs.com/)
 
+编译:npx tsc
+
+运行: node .编译文件路径.js
+
 
 
 ## X-template
@@ -457,16 +464,114 @@ X-template:
 
 
 
-### 模板目录
+### 项目路径
 
 - .vscode	控制vs显示输入
 - content  客户端文件夹, 每个玩家都有
-  - src
+  - maps
+  - panorama UI文件
+    - layout\custom_game 模板编译后UI文件
+    - src  模板编译前UI文件
     - tsconfig.json  关于客户端文件ts语言的设置
 - excels  编辑项目中所用到的KV,会自动转换成game/scripts下的txt
 - game  服务端文件
   - game_mode.ts  游戏的入口
 - scritps  xtemplate所使用的文件, 与游戏项目无关,可忽略
+
+### 模块化编程
+
+在没有使用X-template时, dota2的js不支持模块化编程, X-template使用webpack转译和特殊手段实现
+(词法分析器, AST树, 将代码转换为类似JSON的规则字符串集, 再转换为其他语言)
+
+引入模块
+
+```tsx
+import { abc } from "./test"
+
+	//
+	const test = abc()
+```
+
+编写模块同时导出
+
+```tsx
+export const abc = () => {
+    
+}
+```
+
+
+
+## TypeScript
+
+npm --init	初始化js项目
+npx tsc --init	初始化ts项目(typescript是js的超集) 生成编译器配置文件, 修改rootDir和outDir路径
+每次编译ts文件运行 npx tsc
+
+TypeScript只是一种强类型推断的语言, 并不能直接执行, 而是要编译成其他代码, 比如Javascript才能在node环境里执行.
+
+[TypeScript 教程](https://www.runoob.com/typescript/ts-tutorial.html)
+
+### 语法
+
+略, 较丰富, 支持continue
+
+#### 变量
+
+let 声明变量, 可以重新赋值
+const 声明常量, 不能重新赋值, (声明对象，然后修改对象中的属性可以)
+
+#### 类Class
+
+```tsx
+class Car { 
+   // 字段
+   engine:string; 
+   
+   // 构造函数
+   constructor(engine:string) { 
+      this.engine = engine 
+   }  
+   
+   // 方法
+   disp():void { 
+      console.log("函数中显示发动机型号  :   "+this.engine) 
+   } 
+} 
+ 
+// 创建一个对象
+const obj = new Car("XXSY1")
+ 
+// 访问字段
+console.log("读取发动机型号 :  "+obj.engine)  
+ 
+// 访问方法
+obj.disp()
+```
+
+
+
+#### map和循环
+
+https://www.jiyik.com/tm/xwzj/web_834.html
+
+
+
+## 编写技能
+
+.\excels\kv.xlxs	通过这个excel编写所有于kv相关的,包括英雄, 技能, 物品等
+
+对应转换为game\scripts\npc\abilities.txt 文件
+
+
+
+```tsx
+@reloadable		// script_reload时可以重载技能
+@registerAbility()		// 注册到DOTA技能中
+
+=========================
+import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符串类名)
+```
 
 
 
@@ -487,7 +592,11 @@ X-template:
 
 - DOTA2技能Lua库 https://github.com/vulkantsk/SpellLibraryLua
 
-- [node安装_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1n44y1e7B4?p=1)
+- [ts+xtemplate](https://www.bilibili.com/video/BV1n44y1e7B4?p=1)
+
+- [火蛙-KV键值文档](https://docs.qq.com/sheet/DZUVFaVVobmptQ2Rl)
+
+- 
 
 ## ==文件目录/路径==
 
@@ -597,9 +706,9 @@ X-template:
 
 - 某种未知原因导致无法弹窗等操作,买不了地攻不了城
 
-- 结束清算有问题
+- 蓝量
 
-- 亡国清算如果超时未完成倒计时会进入负数
+- 斧王使用跳刀 购买 精气之球后走到自身领地 回合计时器暂停
 
 
 
@@ -620,6 +729,14 @@ X-template:
   ​    nGold = nGold - 1000
 
     end
+  
+-   if table.maxn(GMManager.m_tabOprtCan) > 1 then
+
+  ​    GMManager:updataTimeOprt()
+
+    end
+  
+- 神秘法杖改回来
 
 
 
