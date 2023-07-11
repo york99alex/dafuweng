@@ -1,21 +1,13 @@
 {
     "Lua.diagnostics.globals": [
-        "LinkLuaModifier",
-        "LUA_MODIFIER_MOTION_NONE",
-        "ListenToGameEvent",
-        "Dynamic_Wrap",
-        "IsClient",
+        "Entities",
+        "co_create",
+        "AppendToLogFile",
+        "CustomNetTables",
+        "PlayerResource",
         "RandomInt",
-        "ACT_DOTA_CAST_ABILITY_3",
-        "EmitSoundOn",
-        "IsServer",
-        "EntIndexToHScript",
-        "GetMapName",
-        "LoadKeyValues",
-        "GameRules",
         "CustomGameEventManager",
-        "CustomNetTableManager",
-        "DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD",
-        "DoUniqueString"
+        "GameRules",
+        "DOTA_TEAM_GOODGUYS"
     ]
 }

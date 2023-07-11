@@ -303,7 +303,7 @@ function SkinManager:registerEvent()
 	EventManager:register("Event_Service_AllData", SkinManager.onEvent_Service_UseSkin, SkinManager)
 	EventManager:register("Event_Service_PlayerAllItems", SkinManager.onEvent_Service_PlayerAllItems, SkinManager)
 	EventManager:register("Event_Service_UseSkin", SkinManager.onEvent_Service_UseSkin, SkinManager)
-	EventManager:register("Event_EndGame", SkinManager.onEvent_EndGame, SkinManager)
+	-- EventManager:register("Event_EndGame", SkinManager.onEvent_EndGame, SkinManager)
 	ListenToGameEvent("player_connect_full", Dynamic_Wrap(SkinManager, "onEvent_playerConnectFull"), SkinManager)
 end
 

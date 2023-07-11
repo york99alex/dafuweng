@@ -37,6 +37,7 @@
 	"item_holy_locket"			"REMOVE"	//圣洁吊坠
 	"item_helm_of_the_dominator""REMOVE"	//支配头盔
 	"item_power_treads"			"REMOVE"	//原版动力鞋
+	// "item_octarine_core"		"REMOVE"	//原版玲珑心
 	"item_ultimate_scepter"		"REMOVE"	//阿哈利姆神杖
 	"item_ultimate_scepter_2"	"REMOVE"	//阿哈利姆的福佑
 	"item_pipe"					"REMOVE"	//原版洞察烟斗
@@ -132,4 +133,8 @@
 	"item_wind_waker"			"REMOVE"	//大风杖
 	"item_orb_of_corrosion"		"REMOVE"	//大毒球
 	"item_falcon_blade"			"REMOVE"	//猎鹰战刃
+	"item_phylactery"			"REMOVE"	//灵匣
+	"item_revenants_brooch"		"REMOVE"	//英灵胸针
+	"item_disperser"			"REMOVE"	//散魂剑
+	"item_pavise"				"REMOVE"	//长盾
 }

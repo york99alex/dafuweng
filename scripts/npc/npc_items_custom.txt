@@ -2877,11 +2877,11 @@
         "AbilityTextureName"	"item_blink"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"ID"							"1"
-		"ItemCost"						"2500"
+		"ItemCost"						"2200"
 		"ItemDroppable"                 "1"
 		"SecretShop"					"1"		//神秘商店
-		"SideShop"						"0"		//边路商店
-		"GlobalShop"					"0"		//全部商店
+		"SideShop"						"1"		//边路商店
+		"GlobalShop"					"1"		//全部商店
 		"IsSupply"						"4"		//补给
 
 		"AbilityCooldown"				"5"
@@ -5085,17 +5085,17 @@
 		// Recipe
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"					"1"
-		"ItemResult"					"item_octarine_core"
+		"ItemResult"					"item_octarine_core_bg"
 		"ItemRequirements"
 		{
 			"01"						"item_mystic_staff;item_point_booster"
 		}
 	}
-	"item_octarine_core"
+	"item_octarine_core_bg"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"235"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"							"688"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"         			"item_datadriven"
         "AbilityTextureName"			"item_octarine_core"
@@ -5128,6 +5128,7 @@
 				{
 					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"%spell_amp"
 					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
+					"MODIFIER_PROPERTY_MANA_BONUS"		"%bonus_mana"
 				}
 				"OnCreated"
 				{

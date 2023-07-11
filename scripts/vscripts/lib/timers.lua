@@ -178,7 +178,6 @@ function Timers:CreateTimer(name, args)
     return
   end
 
-
   local now = GameRules:GetGameTime()
   if args.useGameTime ~= nil and args.useGameTime == false then
     now = Time()
@@ -190,7 +189,7 @@ function Timers:CreateTimer(name, args)
     args.endTime = now + args.endTime
   end
 
-  Timers.timers[name] = args 
+  Timers.timers[name] = args
 
   return name
 end

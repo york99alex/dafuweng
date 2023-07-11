@@ -1752,7 +1752,7 @@ function onItem_MaxHP(keys)
         item_ultimate_scepter = 175,
         item_vanguard = 250,
         item_crimson_guard = 250,
-        item_octarine_core = 425
+        item_octarine_core_bg = 425
     }
     for k, v in pairs(nHPTable) do
         if itemName == k then

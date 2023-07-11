@@ -16,7 +16,7 @@ if not DeathClearing then
             ----- 触发死亡清算
             Event_TO_SendDeathClearing = "Event_TO_SendDeathClearing",
             ----- 死亡清算操作结束
-            Event_TO_DeathClearing = "Event_TO_DeathClearing",
+            Event_TO_DeathClearing = "Event_TO_DeathClearing"
         }
     }
 end
@@ -51,10 +51,9 @@ function DeathClearing.ProcessSendDC(data)
     --     end)
     --     return
     -- end
+    print("GMManager.m_typeState:", GMManager.m_typeState)
     if player:GetGold() < 0 and
-    (GMManager.m_typeState == GS_Move
-    or GMManager.m_typeState == GS_wait
-    or GMManager.m_typeState == GS_Supply) then
+        (GMManager.m_typeState == GS_Move or GMManager.m_typeState == GS_wait or GMManager.m_typeState == GS_Supply) then
         local function waitDC()
             if player:GetGold() < 0 and not player.m_bDie then
                 if not exist(this.mDCPlayers, player.m_nPlayerID) then
@@ -78,17 +77,23 @@ function DeathClearing.ProcessSendDC(data)
     if not exist(this.mDCPlayers, player.m_nPlayerID) and player:GetGold() < 0 then
         this.StartDC(player.m_nPlayerID)
     else
-        this.ProcessDC({ PlayerID = data.nPlayerID, nPlayerID = data.nPlayerID, typeOprt = TypeOprt.TO_DeathClearing, nRequest = 0 })
+        this.ProcessDC({
+            PlayerID = data.nPlayerID,
+            nPlayerID = data.nPlayerID,
+            typeOprt = TypeOprt.TO_DeathClearing,
+            nRequest = 0
+        })
     end
 end
 
 function DeathClearing.WaitMoveEndDC()
 
-    EventManager:fireEvent(DeathClearing.EvtID.Event_TO_SendDeathClearing, { nPlayerID = self.m_nPlayerID })
+    EventManager:fireEvent(DeathClearing.EvtID.Event_TO_SendDeathClearing, {
+        nPlayerID = self.m_nPlayerID
+    })
 end
 
 function DeathClearing.StartDC(nPlayerID)
-
     if this.resumeGameTimer then
         Timers:RemoveTimer(this.resumeGameTimer)
     end
@@ -130,7 +135,6 @@ function DeathClearing.StartDC(nPlayerID)
         return TypeOprt.TO_DeathClearing ~= v.typeOprt
     end)
 
-
     local sendAllData = {
         nPlayerID = nPlayerID,
         typeOprt = TypeOprt.TO_DeathClearing
@@ -144,17 +148,20 @@ end
 
 function DeathClearing.ProcessDC(data)
     this.Print("Process_DeathClearing", data)
-
+    print("this.beforeGameState:", this.beforeGameState)
     if this.beforeGameState == nil then
+        print("判断成功1")
         return
     end
 
     local checkOP = GMManager:checkOprt(data, true)
+    print("checkOP:", checkOP)
     if checkOP ~= false then
         local player = PlayerManager:getPlayer(data.nPlayerID)
         remove(this.mDCPlayers, data.nPlayerID)
 
         local playerDie = false
+        print("player:GetGold():", player:GetGold())
         ---- 判断玩家破产
         if player:GetGold() < 0 then
             this.PlayerDeath(player)
@@ -173,36 +180,43 @@ function DeathClearing.ProcessDC(data)
                 GSManager:setState(this.beforeGameState.m_typeState)
             end
 
-            ---- 恢复之前操作
-            this.resumeGameTimer = Timers:CreateTimer({
-                endTime = 0,
-                callback = function()
-                    this.Print("resume m_tabOprtBroadcast:", this.beforeGameState.m_tabOprtBroadcast)
-                    this.Print("resume m_tabOprtSend:", this.beforeGameState.m_tabOprtSend)
-                    for i = 1, #this.beforeGameState.m_tabOprtBroadcast do
-                        local tabOprt = this.beforeGameState.m_tabOprtBroadcast[i]
-                        if tabOprt.nPlayerID == data.nPlayerID and playerDie == false
-                        or tabOprt.nPlayerID ~= data.nPlayerID then
-                            this.Print("GMManager.broadcastOprt")
-                            GMManager:broadcastOprt(tabOprt)
+            print("DeathClearing:table.maxn(GMManager.m_tabOprtCan)", table.maxn(GMManager.m_tabOprtCan))
+            if (table.maxn(GMManager.m_tabOprtCan) > 0) then
+                ---- 恢复之前操作
+                print("恢复之前操作")
+                this.resumeGameTimer = Timers:CreateTimer({
+                    endTime = 0,
+                    callback = function()
+                        this.Print("resume m_tabOprtBroadcast:", this.beforeGameState.m_tabOprtBroadcast)
+                        this.Print("resume m_tabOprtSend:", this.beforeGameState.m_tabOprtSend)
+                        for i = 1, #this.beforeGameState.m_tabOprtBroadcast do
+                            local tabOprt = this.beforeGameState.m_tabOprtBroadcast[i]
+                            if tabOprt.nPlayerID == data.nPlayerID and playerDie == false or tabOprt.nPlayerID ~=
+                                data.nPlayerID then
+                                this.Print("GMManager.broadcastOprt")
+                                GMManager:broadcastOprt(tabOprt)
+                            end
                         end
-                    end
-                    for i = 1, #this.beforeGameState.m_tabOprtSend do
-                        local tabOprt = this.beforeGameState.m_tabOprtSend[i]
-                        if tabOprt.nPlayerID == data.nPlayerID and playerDie == false
-                        or tabOprt.nPlayerID ~= data.nPlayerID then
-                            this.Print("GMManager.sendOprt")
-                            GMManager:sendOprt(tabOprt)
+                        for i = 1, #this.beforeGameState.m_tabOprtSend do
+                            local tabOprt = this.beforeGameState.m_tabOprtSend[i]
+                            if tabOprt.nPlayerID == data.nPlayerID and playerDie == false or tabOprt.nPlayerID ~=
+                                data.nPlayerID then
+                                this.Print("GMManager.sendOprt")
+                                GMManager:sendOprt(tabOprt)
+                            end
                         end
+                        this.Print("resume end")
+                        this.beforeGameState = nil
                     end
-                    this.Print("resume end")
-                    this.beforeGameState = nil
-                end
-            })
+                })
+            end
         else
             GMManager:setOrder(this.mDCPlayers[1])
         end
-        PlayerManager:broadcastMsg("GM_OperatorFinished", { nPlayerID = data.nPlayerID, typeOprt = TypeOprt.TO_DeathClearing })
+        PlayerManager:broadcastMsg("GM_OperatorFinished", {
+            nPlayerID = data.nPlayerID,
+            typeOprt = TypeOprt.TO_DeathClearing
+        })
         this.PlayerDC(player, false)
     end
 end
@@ -261,10 +275,13 @@ end
 ----设置玩家死亡清算状态
 ----@param player Player
 function DeathClearing.PlayerDC(player, state)
+    print("player.m_bDeathClearing", player.m_bDeathClearing)
     if player.m_bDeathClearing ~= state then
         player.m_bDeathClearing = state
         player:setNetTableInfo()
+        print("state:", state, "判断成功")
     end
+    print("state:", state, "判断成功")
 end
 
 ----- 玩家死亡
@@ -274,8 +291,9 @@ function DeathClearing.PlayerDeath(player)
     if GMManager.m_nOrderFirst == player.m_nPlayerID then
         GMManager.m_nOrderFirst = GMManager:getNextValidOrder(player.m_nPlayerID)
     end
-
-    EventManager:fireEvent("Event_PlayerDie", { player = player })
+    EventManager:fireEvent("Event_PlayerDie", {
+        player = player
+    })
 end
 
 function DeathClearing.Print(title, data)

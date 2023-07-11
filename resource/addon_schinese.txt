@@ -545,10 +545,12 @@
 		"DOTA_Tooltip_ability_item_kaya_Note0"					"被动效果不叠加"
 
 		//玲珑心
-		"DOTA_Tooltip_ability_item_octarine_core_Description"		"<h1>被动：冷却减少</h1>玩家物品和英雄技能的冷却时间减少<font color='#7e8c9d'> %cd_sub%% </font>回合。"
-		"DOTA_Tooltip_ability_item_octarine_core_bonus_health"			"+ 生命值"
-		"DOTA_Tooltip_ability_item_octarine_core_bonus_mana"			"+ 魔法上限"
-		"DOTA_Tooltip_ability_item_octarine_core_Note0"					"被动效果不叠加"
+		"DOTA_Tooltip_ability_item_octarine_core_bg"					"玲珑心"
+		"DOTA_Tooltip_ability_item_octarine_core_bg_Description"		"<h1>被动：冷却减少</h1>玩家物品和英雄技能的冷却时间减少<font color='#7e8c9d'> %cd_sub% </font>回合。"
+		"DOTA_Tooltip_ability_item_octarine_core_bg_bonus_health"			"+ 生命值"
+		"DOTA_Tooltip_ability_item_octarine_core_bg_bonus_mana"			"+ 魔法上限"
+		"DOTA_Tooltip_ability_item_octarine_core_bg_spell_amp"			"%+ 技能增强"
+		"DOTA_Tooltip_ability_item_octarine_core_bg_Note0"					"被动效果不叠加"
 
 		//神秘法杖
 		"DOTA_Tooltip_ability_item_mystic_staff_spell_amp"				"%+ 技能增强"

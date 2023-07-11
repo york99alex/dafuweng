@@ -200,7 +200,7 @@ function Player:initPlayer()
 	end
 
 	----更新皮肤
-	self:updataSkin()
+	-- self:updataSkin()
 
 	----设置共享主单位
 	ItemShare:setShareOwner(self.m_eHero)
@@ -305,7 +305,11 @@ function Player:setGold(nGold)
 	--	 self.m_nGold = self.m_nGold + self.m_eHero:GetGold()
 	-- end
 	--
+
 	nGold = nGold + self.m_nGold
+	-- if nGold > 0 then
+	-- 	nGold = nGold - 1000
+	-- end
 	self.m_nGold = nGold
 
 	-- if nGold > 0 then

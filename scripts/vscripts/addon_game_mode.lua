@@ -91,7 +91,7 @@ function Precache(context)
 
     print("Precache...")
 
-    local t = Table_maxn(_G.PrecacheItems)
+    local t = table.maxn(_G.PrecacheItems)
     for i = 1, t do
         if string.find(_G.PrecacheItems[i], ".vpcf") then
             PrecacheResource("particle", _G.PrecacheItems[i], context)
@@ -118,60 +118,61 @@ if IsInToolsMode() then
     GameRules:Playtesting_UpdateAddOnKeyValues()
 end
 
---HTTP请求
-function SendHTTP(url, callback, fail_callback)
-    local str0 = url
-    local str1 = ''
-    local str2 = ''
-    local str3 = ''
-    local usercheck = 0
-    local x1 = string.find(str0, '@', 1)
-    if x1 then
-        usercheck = 1
-        str1 = string.sub(str0, x1 + 1, -1)
-    else
-        str1 = str0
-    end
-    local x2 = string.find(str1, '@', 1)
-    if x2 then
-        str2 = string.sub(str1, 0, x2 - 1)
-    else
-        str2 = str1
-    end
-    local x3 = string.find(str2, '?', 1)
-    if x3 then
-        str3 = string.sub(str2, 0, x3 - 1)
-    else
-        str3 = str2
-    end
-    if usercheck == 1 then
-        local usertable = string.split(str3, ',')
-        for _, userid in pairs(usertable) do
-            if userid then
-                if not string.find(GameRules:GetGameModeEntity().steamidlist, userid, 1) and not string.find(GameRules:GetGameModeEntity().steamidlist_heroindex, userid, 1) then
-                    return
-                end
-            end
-        end
-    end
-    local req = CreateHTTPRequestScriptVM('GET', url)
-    req:SetHTTPRequestAbsoluteTimeoutMS(20000)
+-- --HTTP请求
+-- function SendHTTP(url, callback, fail_callback)
+--     local str0 = url
+--     local str1 = ''
+--     local str2 = ''
+--     local str3 = ''
+--     local usercheck = 0
+--     local x1 = string.find(str0, '@', 1)
+--     if x1 then
+--         usercheck = 1
+--         str1 = string.sub(str0, x1 + 1, -1)
+--     else
+--         str1 = str0
+--     end
+--     local x2 = string.find(str1, '@', 1)
+--     if x2 then
+--         str2 = string.sub(str1, 0, x2 - 1)
+--     else
+--         str2 = str1
+--     end
+--     local x3 = string.find(str2, '?', 1)
+--     if x3 then
+--         str3 = string.sub(str2, 0, x3 - 1)
+--     else
+--         str3 = str2
+--     end
+--     if usercheck == 1 then
+--         local usertable = string.split(str3, ',')
+--         for _, userid in pairs(usertable) do
+--             if userid then
+--                 if not string.find(GameRules:GetGameModeEntity().steamidlist, userid, 1) and not string.find(GameRules:GetGameModeEntity().steamidlist_heroindex, userid, 1) then
+--                     return
+--                 end
+--             end
+--         end
+--     end
+--     local req = CreateHTTPRequestScriptVM('GET', url)
+--     req:SetHTTPRequestAbsoluteTimeoutMS(20000)
 
-    req:Send(function(res)
+--     req:Send(function(res)
 
-        if res.StatusCode ~= 200 or not res.Body then
-            if fail_callback ~= nil then
-                fail_callback(obj)
-            end
-            return
-        end
+--         if res.StatusCode ~= 200 or not res.Body then
+--             if fail_callback ~= nil then
+--                 fail_callback(obj)
+--             end
+--             return
+--         end
 
-        local obj = json.decode(res.Body)
-        if callback ~= nil then
-            callback(obj)
-        end
-    end)
-end
+--         local obj = json.decode(res.Body)
+--         if callback ~= nil then
+--             callback(obj)
+--         end
+--     end)
+-- end
+
 function prt(t)
     GameRules:SendCustomMessage('' .. t, 0, 0)
 end

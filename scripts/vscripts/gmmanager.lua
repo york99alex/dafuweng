@@ -127,7 +127,7 @@ function GMManager:init(bReload)
 	self:registerMessage()
 	self:registerThink()
 
-	Service:init(bReload)
+	-- Service:init(bReload)
 	Filters:init(bReload)
 	Attributes:init(bReload)
 	ParaAdjuster:Init()
@@ -197,6 +197,7 @@ function GMManager:setOrder(nOrder)
 	local tab = { nPlayerID = self.m_nOrderID }
 	CustomNetTables:SetTableValue("GameingTable", "order", tab)
 end
+----获取下一个有效的操作玩家ID
 function GMManager:getNextValidOrder(nOrder)
 	local nIndex = HeroSelection:GetPlayerIDIndex(nOrder)
 	nIndex = GMManager:addOrder(nIndex + 1)
@@ -284,7 +285,14 @@ end
 function GMManager:autoOprt(typeOprt, oPlayer)
 	--print("autoOprt 111 typeOprt=" .. (typeOprt or 'nil'))
 	--PrintTable(self.m_tabOprtCan)
+	print("table.maxn(self.m_tabOprtCan):",table.maxn(self.m_tabOprtCan))
+	-- if(table.maxn(self.m_tabOprtCan) == 0) then
+	-- 	GSManager:setState(GS_End)
+	-- end
+	
 	for k, v in pairs(self.m_tabOprtCan) do
+		print("v.typeOprt:",v.typeOprt)
+		print("v.nPlayerID",v.nPlayerID)
 		if
 		(nil == typeOprt or typeOprt == v.typeOprt) and ----指定操作
 		(nil == oPlayer or v.nPlayerID == oPlayer.m_nPlayerID)
@@ -309,7 +317,7 @@ function GMManager:autoOprt(typeOprt, oPlayer)
 				----出狱，默认不买活
 				v.nRequest = 0
 			elseif TypeOprt.TO_DeathClearing == v.typeOprt then
-				v.nRequest = 0
+				v.nRequest = 1
 			elseif TypeOprt.TO_AtkMonster == v.typeOprt then
 				v.nRequest = 0
 			elseif TypeOprt.TO_RandomCard == v.typeOprt then
@@ -391,6 +399,7 @@ end
 
 ----设置结算数据
 function GMManager:setGameEndData()
+	print("设置结算数据")
 	for _, v in pairs(GMManager.m_tabEnd) do
 		local player = PlayerManager:getPlayerBySteamID64(v.steamid64)
 		if not NIL(player) then
@@ -414,22 +423,22 @@ function GMManager:setGameEndData()
 	end
 
 	----请求结算
-	Service:RequestGameEnd(GMManager.m_tabEnd, function(tData)
-		----添加结算信息
-		for steamid, v in pairs(tData) do
-			local player = PlayerManager:getPlayerBySteamID64(tostring(steamid))
-			if player then
-				local info = CustomNetTables:GetTableValue("EndTable", "player_info_" .. player.m_nPlayerID)
-				if info then
-					info["nReward"] = v["gold"]
-					info["sLevel"] = v["level"]
-					print("GameEnd Data ======================================")
-					DeepPrintTable(info)
-					CustomNetTables:SetTableValue("EndTable", "player_info_" .. player.m_nPlayerID, info)
-				end
-			end
-		end
-	end)
+	-- Service:RequestGameEnd(GMManager.m_tabEnd, function(tData)
+	-- 	----添加结算信息
+	-- 	for steamid, v in pairs(tData) do
+	-- 		local player = PlayerManager:getPlayerBySteamID64(tostring(steamid))
+	-- 		if player then
+	-- 			local info = CustomNetTables:GetTableValue("EndTable", "player_info_" .. player.m_nPlayerID)
+	-- 			if info then
+	-- 				info["nReward"] = v["gold"]
+	-- 				info["sLevel"] = v["level"]
+	-- 				print("GameEnd Data ======================================")
+	-- 				DeepPrintTable(info)
+	-- 				CustomNetTables:SetTableValue("EndTable", "player_info_" .. player.m_nPlayerID, info)
+	-- 			end
+	-- 		end
+	-- 	end
+	-- end)
 
 	GMManager.m_tabEnd = {}
 end
@@ -631,16 +640,18 @@ function GMManager:onEvent_PlayerDie(tabEvent)
 		time_game = math.floor(GameRules:GetGameTime()),
 		is_abandon = tabEvent.player.m_bAbandon
 	})
-
+	print("nAlive:",nAlive)
 	if 2 == nAlive then
 		----开启决战
 		self.m_bFinalBattle = true
 		EventManager:fireEvent("Event_FinalBattle")
 	elseif 2 > nAlive then
+		print("onEvent_PlayerDie:游戏结束")
 		----游戏结束
 		-- GMManager:setState(GS_End)
-		GSManager:setState(GS_End)
+		print("PlayerManager:isAlivePlayer(player.m_nPlayerID):",PlayerManager:isAlivePlayer(player.m_nPlayerID))
 		GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+
 		----添加第一名
 		for _, player in pairs(PlayerManager.m_tabPlayers) do
 			if PlayerManager:isAlivePlayer(player.m_nPlayerID) then
@@ -652,6 +663,13 @@ function GMManager:onEvent_PlayerDie(tabEvent)
 					is_abandon = player.m_bAbandon
 				})
 				break
+			else
+				print("steamid64:",tostring(PlayerResource:GetSteamID(player.m_nPlayerID)))
+				print("rank_num: 1")
+				print("hero_name:", player.m_eHero and player.m_eHero:GetUnitName())
+				print("time_game:", math.floor(GameRules:GetGameTime()))
+				print("is_abandon:",player.m_bAbandon)
+				break
 			end
 		end
 
@@ -659,7 +677,9 @@ function GMManager:onEvent_PlayerDie(tabEvent)
 		for nID, _ in pairs(PlayerManager.m_tabPlayers) do
 			tEndGame.tPlayerID[nID] = nID
 		end
-		EventManager:fireEvent('Event_EndGame', tEndGame)
+		print("print tEndGame table:")
+		PrintTable(tEndGame)
+		-- EventManager:fireEvent('Event_EndGame', tEndGame)
 	end
 
 	----剩余操作出来
@@ -680,9 +700,11 @@ function GMManager:onEvent_PlayerDie(tabEvent)
 	end
 
 	----改变首位玩家
+	print("self.m_nOrderFirst == tabEvent.player.m_nPlayerID:", self.m_nOrderFirst == tabEvent.player.m_nPlayerID)
 	if self.m_nOrderFirst == tabEvent.player.m_nPlayerID then
 		self.m_nOrderFirst = GMManager:getNextValidOrder(tabEvent.player.m_nPlayerID)
 	end
+	print("self.m_nOrderFirst:",self.m_nOrderFirst)
 
 	----设置结算
 	GMManager:setGameEndData()
@@ -921,8 +943,8 @@ function GMManager:processRoll(tabData)
 	local tabOprt = self:checkOprt(tabData, true)
 
 	----测试
-	-- nNum1 = 2
-	-- nNum2 = 4
+	-- nNum1 = 5
+	-- nNum2 = 6
 
 	----广播玩家roll点操作
 	tabOprt.nNum1 = nNum1

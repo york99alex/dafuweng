@@ -1,9 +1,7 @@
---[[d Class【【【【【【【【【【【【【【【【【【【【【【【【【【【【【【】】】】】】】】】】】】】】】】】】】】】】】】】】】】】】】Class]]
-----
+--[[d Class【【【【【【【【【【【【【【【【【【【【【【【【【【【【【【】】】】】】】】】】】】】】】】】】】】】】】】】】】】】】】Class]] ----
 if nil == GSDeathClearing then
     -----@class GSDeathClearing
-    GSDeathClearing = class({
-    }, nil, GS)
+    GSDeathClearing = class({}, nil, GS)
 end
 GSManager.m_tStates[GS_DeathClearing] = GSDeathClearing
 ----
@@ -16,8 +14,14 @@ end
 
 ----当前状态的持续
 function GSDeathClearing:update()
+    -- print("table.maxn(self.m_tabOprtCan)",table.maxn(self.m_tabOprtCan))
+    -- if (table.maxn(self.m_tabOprtCan) == 0) then
+    --     GSManager:setState(GS_End)
+    -- end
     print("onState_DeathClearing")
-    GMManager:updataTimeOprt()
+    if table.maxn(GMManager.m_tabOprtCan) > 1 then
+        GMManager:updataTimeOprt()
+    end
 
     if 0 > GMManager.m_timeOprt then
         ----时间结束，自动操作

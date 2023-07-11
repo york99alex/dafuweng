@@ -316,7 +316,7 @@ function PlayerManager:onEvent_playerDisconnect(keys)
 			EventManager:fireEvent('Event_Abandoned', { nPlayerID = keys.PlayerID })
 			local tab = { tPlayerID = {} }
 			tab.tPlayerID[keys.PlayerID] = keys.PlayerID
-			EventManager:fireEvent('Event_EndGame', tab)
+			-- EventManager:fireEvent('Event_EndGame', tab)
 			return
 		end
 		----掉线中
