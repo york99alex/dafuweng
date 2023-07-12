@@ -552,6 +552,9 @@
 		"DOTA_Tooltip_ability_item_octarine_core_bg_spell_amp"			"%+ 技能增强"
 		"DOTA_Tooltip_ability_item_octarine_core_bg_Note0"					"被动效果不叠加"
 
+		"DOTA_Tooltip_ability_item_octarine_core_Description"		"忽略其他属性描述:玲珑心装备属性为+425生命值,+1魔法上限,+25%技能增强,被动减少技能CD一回合"
+
+
 		//神秘法杖
 		"DOTA_Tooltip_ability_item_mystic_staff_spell_amp"				"%+ 技能增强"
 

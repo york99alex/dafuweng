@@ -4,3 +4,4 @@ tools_asset_info.bin
 *.bin
 .vscode/settings.json
 tools_asset_info.bin
+resource/custom_game_whitelist.txt

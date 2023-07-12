@@ -19,9 +19,7 @@ function GSDeathClearing:update()
     --     GSManager:setState(GS_End)
     -- end
     print("onState_DeathClearing")
-    if table.maxn(GMManager.m_tabOprtCan) > 1 then
-        GMManager:updataTimeOprt()
-    end
+    GMManager:updataTimeOprt()
 
     if 0 > GMManager.m_timeOprt then
         ----时间结束，自动操作

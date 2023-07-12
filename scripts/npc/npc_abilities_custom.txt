@@ -3156,7 +3156,7 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"chance"					"15 25 35"
+				"chance"					"20 30 40"
 			}
 			// "02"
 			// {
