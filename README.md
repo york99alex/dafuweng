@@ -596,7 +596,11 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
 - [火蛙-KV键值文档](https://docs.qq.com/sheet/DZUVFaVVobmptQ2Rl)
 
-- 
+- TS教程:
+   - [TypeScript 入门教程](https://ts.xcatliu.com/)
+   - [ 深入理解 TypeScript](https://jkchao.github.io/typescript-book-chinese/)
+   - 
+
 
 ## ==文件目录/路径==
 
@@ -769,6 +773,34 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
       EventManager:register("Event_PlayerDie", Supply.onEvent_PlayerDie, Supply, 10000)
     -   HeroSelection:init(bReload)  选择英雄及玩家轮序
     -   GSManager:init(bReload)  游戏状态管理
+
+
+
+## TS项目思路整理
+
+- index.ts启动项目
+  - new GameConfig();	
+    - export class GameConfig	配置游戏规则及注册事件/消息/计时器
+  - 所有模块初始化: (?思考应该在这里与GameConfig同级之后还是放在gameconfig构造里面)
+  - new PlayerManager().init()
+  - ...
+
+
+
+
+
+## Todo
+
+1. Path路径管理模块, 以及游戏地图
+2. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
+3. 其他模块
+4. 英雄技能
+
+
+
+
+
+
 
 ## 亡国清算逻辑
 
