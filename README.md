@@ -557,6 +557,14 @@ https://www.jiyik.com/tm/xwzj/web_834.html
 
 
 
+#### 方法
+
+##### Timer
+
+
+
+
+
 ## 编写技能
 
 .\excels\kv.xlxs	通过这个excel编写所有于kv相关的,包括英雄, 技能, 物品等
@@ -577,6 +585,8 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
 
 
+
+
 # 附注
 
 ## 链接/学习视频：
@@ -586,16 +596,14 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 - [Dota 2 创意工坊工具集 - Valve Developer Community (valvesoftware.com)](https://developer.valvesoftware.com/w/index.php?title=Dota_2_Workshop_Tools&uselang=zh)
 - [Introduction | ModDota](https://moddota.com/)
   - [API | ModDota](https://moddota.com/api/#!/vscripts)
-
 - 一些定义DOTA函数的仓库
    https://github.com/ModDota/API/blob/master/examples/vscript/declarations/dota-api.d.ts
-
-- DOTA2技能Lua库 https://github.com/vulkantsk/SpellLibraryLua
+- DOTA2技能Lua库 
+   - https://github.com/Elfansoer/dota-2-lua-abilities
+   - https://github.com/vulkantsk/SpellLibraryLua
 
 - [ts+xtemplate](https://www.bilibili.com/video/BV1n44y1e7B4?p=1)
-
 - [火蛙-KV键值文档](https://docs.qq.com/sheet/DZUVFaVVobmptQ2Rl)
-
 - TS教程:
    - [TypeScript 入门教程](https://ts.xcatliu.com/)
    - [ 深入理解 TypeScript](https://jkchao.github.io/typescript-book-chinese/)
@@ -784,8 +792,8 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
   - 所有模块初始化: (?思考应该在这里与GameConfig同级之后还是放在gameconfig构造里面)
   - new PlayerManager().init()
   - ...
-
-
+  
+  
 
 
 
@@ -795,10 +803,19 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 2. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
 3. 其他模块
 4. 英雄技能
+5. Roll点的随机路径平衡机制数值思考
 
 
 
+## 游戏循环状态机GameLoop
 
+状态机负责游戏循环/进程, 状态机的每个状态为一个循环,一个循环里可以嵌套状态机/循环
+
+
+
+/mode/GameLoop
+
+![image-20230715174833787](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/07/15/17-48-33-1cae1a237ad3263414f79f617da3f8a7-image-20230715174833787-1035f1.png)
 
 
 
