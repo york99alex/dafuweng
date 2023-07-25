@@ -502,6 +502,15 @@ export const abc = () => {
 
 
 
+### 网表CustomNetTables
+
+在X模板中需要在两个地方定义需要用的网标:
+
+1. game\scripts\custom_net_tables.txt 里定义table name
+2. game\scripts\src\shared\net_tables.d.ts 里详细定义table,key,value
+
+
+
 ## TypeScript
 
 npm --init	初始化js项目
@@ -750,6 +759,27 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
   
 - 神秘法杖改回来
 
+## 亡国清算逻辑
+
+所有修改的金币时检查是否没钱了:
+
+```lua
+	if (lastnGold >= 0) ~= (nGold >= 0) then
+		print("self.m_nPlayerID:",self.m_nPlayerID)
+		EventManager:fireEvent(DeathClearing.EvtID.Event_TO_SendDeathClearing, { nPlayerID = self.m_nPlayerID })
+	end
+```
+
+是的话触发事件Event_TO_SendDeathClearing, 该事件在初始化时注册
+
+
+
+![image-20230705213809885](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/07/05/21-38-10-a90a318a18a4c1d6c5dca9fd62c8adee-image-20230705213809885-eff308.png)
+
+![image-20230705213828000](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/07/05/21-38-28-981fca2a549ac484af04e8f44fa51b74-image-20230705213828000-05b5dd.png)
+
+
+
 
 
 
@@ -799,11 +829,68 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
 ## Todo
 
-1. Path路径管理模块, 以及游戏地图
-2. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
-3. 其他模块
-4. 英雄技能
-5. Roll点的随机路径平衡机制数值思考
+1. player init
+
+   1. ----设置起点路径
+
+     self:setPath(PathManager:getPathByType(TP_START)[1])
+   /**玩家攻城结束 */
+
+     atkCityEnd(bWin: boolean, bMoveBack?: boolean) 
+
+   测试player.init    
+   // 设置起点路径
+
+   ​    this.setPath(GameRules.PathManager.getPathByType(GameMessage.TP_START)[0])
+
+2. Path路径管理模块, 以及游戏地图
+
+   1. 添加 unit 
+
+   2. 	"path_17_diao"
+         	{
+         		"BaseClass"		"npc_dota_creature"
+         		"Model"			"models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl"
+         		"ModelScale"	"1"
+         		"Ability1"	"jiaoxie"
+         		"Ability2"	"no_bar"
+         		// "Ability3"	"no_collision"
+         		"Ability4"	"magic_immune"
+         		"Ability5"	"physical_immune"
+         		"Ability6"	"no_all_select"
+         		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+         		"StatusHealth"	"1"
+         	}
+
+   3. setDiaoGesture 雕哥施法检查
+
+   4. PathRune
+
+3. 在自定义事件里传数据不能引用类型,注意部分事件触发函数内的方法需改写
+
+4. 兵卒?
+
+5. 其他模块
+
+6. 英雄技能
+
+7. Roll点的随机路径平衡机制数值思考
+
+8. CustomGameEventManager.Send_ServerToPlayer?还是
+
+   Send_ServerToAllClients
+
+9. 检查网表GamingTable的nSumGold总资产计算是否正确
+
+10. 增加英雄 const HERO_TO_BANNER 需要调整
+
+11. 攻城结束音效     StopSoundOn("Hero_LegionCommander.Duel", oPlayer.m_eHero)
+
+12. _tEventIDGCLD   ?为数组?
+
+13. 检查是否正确    if (eBz == null || this.m_tabBz.indexOf(eBz) == -1)
+
+14. addon_schinese.txt :		"RandomTip"						"随机英雄"
 
 
 
@@ -819,24 +906,68 @@ import '../modifier/test_modifier'	// 引入一个修饰器(引入路径+字符�
 
 
 
-## 亡国清算逻辑
 
-所有修改的金币时检查是否没钱了:
 
-```lua
-	if (lastnGold >= 0) ~= (nGold >= 0) then
-		print("self.m_nPlayerID:",self.m_nPlayerID)
-		EventManager:fireEvent(DeathClearing.EvtID.Event_TO_SendDeathClearing, { nPlayerID = self.m_nPlayerID })
-	end
-```
+## 英雄设计
 
-是的话触发事件Event_TO_SendDeathClearing, 该事件在初始化时注册
+- 幽鬼(冠名:qwerty-)
 
 
 
-![image-20230705213809885](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/07/05/21-38-10-a90a318a18a4c1d6c5dca9fd62c8adee-image-20230705213809885-eff308.png)
+# 开发草稿
 
-![image-20230705213828000](https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/07/05/21-38-28-981fca2a549ac484af04e8f44fa51b74-image-20230705213828000-05b5dd.png)
+- player 
+
+  - 成员变量定义
+
+  - 构造函数
+
+  - 初始化
+
+  - player.  initTeam() {
+
+    - 类型定义  m_tabHasCard = null     //  手上的卡牌
+
+        m_tabUseCard = null     //  已使用的卡牌
+
+        m_tabDelCard = null     //  已移除的卡牌
+
+        m_tCourier = null       //  信使
+
+- path路径
+
+- ==todo==// 重新发送手牌
+
+  ​      oPlayer.sendHandCardData()
+
+- EventManager:fireEvent 替换为
+
+- // 设置网表
+
+  ​    const keyname = "player_info_" + this.m_nPlayerID as
+
+  ​      "player_info_0" | "player_info_1" | "player_info_2" | "player_info_3" | "player_info_4" | "player_info_5";
+
+  ​    const info = CustomNetTables.GetTableValue("GamingTable", keyname)
+
+  
+
+## Path
+
+Path的类class name应以	path_corner 
+通过 `let tabAllPathEntities = Entities.FindAllByClassname("path_corner")` 获取entity
+
+同时通过PathType获取其属性值
+`const typePath = entity.GetIntAttr("PathType")`
+
+
+
+## 群大佬
+
+<img src="https://raw.githubusercontent.com/york99alex/Pic4york/main/fix-dir/Typora/typora-user-images/2023/07/25/16-54-29-26ffdfa5d22796b5641ca47fe694acf2-image-20230725165429612-0d8335.png" alt="image-20230725165429612" style="zoom: 33%;" />
+
+- 判断是否在水中
+  local origin = thisEntity:GetAbsOrigin() local input = {startpos = origin+Vector(0,0,32),endpos = origin,mask = 32768} TraceLine(input) print(input.hit)
 
 
 
