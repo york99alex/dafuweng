@@ -54,7 +54,7 @@ function Card_ITEM_blade_mail:OnSpellStart()
         AbilityManager:setCopyBuff('modifier_item_blade_mail_buff', v, v)
     end
     ----兵卒创建更新buff
-    local unUpdataBZBuffByCreate = AbilityManager:updataBZBuffByCreate(player, nil, function(eBZ)
+    local unUpdateBZBuffByCreate = AbilityManager:updataBZBuffByCreate(player, nil, function(eBZ)
         AbilityManager:setCopyBuff('modifier_item_blade_mail_buff', eBZ, eBZ)
     end)
 
@@ -70,7 +70,7 @@ function Card_ITEM_blade_mail:OnSpellStart()
             if IsValid(player.m_eHero) then
                 player.m_eHero:RemoveModifierByName("modifier_item_blade_mail_buff")
             end
-            unUpdataBZBuffByCreate()
+            unUpdateBZBuffByCreate()
             return true
         end
     end)

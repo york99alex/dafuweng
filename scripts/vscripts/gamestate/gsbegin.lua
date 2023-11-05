@@ -1,9 +1,7 @@
---[[d Class【【【【【【【【【【【【【【【【【【【【【【【【【【【【【【】】】】】】】】】】】】】】】】】】】】】】】】】】】】】】】Class]]
-----
+--[[d Class【【【【【【【【【【【【【【【【【【【【【【【【【【【【【【】】】】】】】】】】】】】】】】】】】】】】】】】】】】】】】Class]] ----
 if nil == GSBegin then
     -----@class GSBegin
-    GSBegin = class({
-    }, nil, GS)
+    GSBegin = class({}, nil, GS)
 end
 GSManager.m_tStates[GS_Begin] = GSBegin
 ----
@@ -34,7 +32,7 @@ function GSBegin:start()
 
     if tabEvent.bRoll then
         ----广播roll点操作
-        --GMManager.m_tabOprtCan = {}
+        -- GMManager.m_tabOprtCan = {}
         local tabOprt = {}
         tabOprt.nPlayerID = GMManager.m_nOrderID
         tabOprt.typeOprt = TypeOprt.TO_Roll

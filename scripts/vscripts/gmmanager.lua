@@ -539,6 +539,8 @@ end
 
 ----玩家roll点后移动
 function GMManager:onEvent_Roll(tabEvent)
+	print("onEvent_Roll")
+	DeepPrintTable(tabEvent)
 	if tabEvent.bIgnore then
 		return
 	end

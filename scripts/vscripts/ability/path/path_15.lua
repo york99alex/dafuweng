@@ -44,8 +44,8 @@ function modifier_path_15_L1:OnDestroy()
             end
         end
     end
-    if self.unUpdataBZBuffByCreate then
-        self:unUpdataBZBuffByCreate()
+    if self.unUpdateBZBuffByCreate then
+        self:unUpdateBZBuffByCreate()
     end
     if self.tEventID then
         for _, nID in pairs(self.tEventID) do
@@ -80,7 +80,7 @@ function modifier_path_15_L1:OnCreated(kv)
                     eBZ:AddNewModifier(self.oPlayer.m_eHero, self:GetAbility(), "modifier_path_15" .. "_chenmo", {})
                 end
             end
-            self.unUpdataBZBuffByCreate = AbilityManager:updataBZBuffByCreate(self.oPlayer, self:GetAbility(), function(eBZ)
+            self.unUpdateBZBuffByCreate = AbilityManager:updataBZBuffByCreate(self.oPlayer, self:GetAbility(), function(eBZ)
                 if IsValid(self) then
                     local oBuff = eBZ:AddNewModifier(self.oPlayer.m_eHero, self:GetAbility(), self:GetName(), {})
                     if oBuff and 3 == self:GetAbility():GetLevel() and TP_DOMAIN_4 == eBZ.m_path.m_typePath then

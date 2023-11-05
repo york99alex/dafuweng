@@ -574,7 +574,7 @@ function PathDomain:onEvent_PlayerRoundBefore(tabEvent)
             GSManager:setState(GS_Move)
             -- tabEvent.typeGameState = GS_Move
             EventManager:register("Event_PlayerMoveEnd", function(tabEvent3)
-                if tabEvent2.player == oPlayer then
+                if tabEvent3.player == oPlayer then
                     ----玩家移动结束，游戏重新进入begin状态
                     -- GMManager:setStateBeginReady()
                     GSManager:resumeState(self._YieldStateCO)

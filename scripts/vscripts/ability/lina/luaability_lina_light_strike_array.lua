@@ -125,7 +125,7 @@ function LuaAbility_lina_light_strike_array:atk(tabPlayer)
         , player.m_eHero, self:GetCaster(), self)
         ----兵卒创建更新buff
         if buff then
-            buff.unUpdataBZBuffByCreate = AbilityManager:updataBZBuffByCreate(player, nil, function(eBZ)
+            buff.unUpdateBZBuffByCreate = AbilityManager:updataBZBuffByCreate(player, nil, function(eBZ)
                 AbilityManager:setCopyBuff('modifier_luaAbility_lina_light_strike_array'
                 , eBZ, self:GetCaster(), self)
             end)
@@ -142,7 +142,7 @@ function LuaAbility_lina_light_strike_array:atk(tabPlayer)
         --         if IsValid(player.m_eHero) then
         --             player.m_eHero:RemoveModifierByNameAndCaster("modifier_luaAbility_lina_light_strike_array", self:GetCaster())
         --         end
-        --         unUpdataBZBuffByCreate()
+        --         unUpdateBZBuffByCreate()
         --         return true
         --     end
         -- end)
@@ -189,8 +189,8 @@ function modifier_luaAbility_lina_light_strike_array:OnCreated(kv)
     end
 end
 function modifier_luaAbility_lina_light_strike_array:OnDestroy()
-    if self.unUpdataBZBuffByCreate then
-        self.unUpdataBZBuffByCreate()
+    if self.unUpdateBZBuffByCreate then
+        self.unUpdateBZBuffByCreate()
     end
 end
 function modifier_luaAbility_lina_light_strike_array:DeclareFunctions()

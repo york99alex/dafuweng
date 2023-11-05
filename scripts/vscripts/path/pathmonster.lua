@@ -22,6 +22,7 @@ end
 function PathMonster:constructor(e)
     self.__base__.constructor(self, e)
     self.m_eCity = Entities:FindByName(nil, "city_" .. self.m_nID)
+    print("self.m_eCity:GetClassname():", self.m_eCity:GetClassname())
     if self.m_eCity then
         self.m_eCity:SetForwardVector(Vector(0, 0, 0) - self.m_eCity:GetAbsOrigin())
         ----路径视野

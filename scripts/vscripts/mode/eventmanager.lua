@@ -154,6 +154,7 @@ end
 ---@param strEvent 事件名
 ---@vararg 附带参数
 function public:fireEvent(strEvent, ...)
+	print("FireEvent==>eventName:",strEvent)
 	if nil ~= self.m_tBlockFire then
 		table.insert(self.m_tBlockFire, { strEvent, { ... } })
 		return

@@ -84,7 +84,7 @@ function Card_ITEM_crimson_guard:OnSpellStart()
         end
     end
     ----兵卒创建更新buff
-    local unUpdataBZBuffByCreate = AbilityManager:updataBZBuffByCreate(player, nil, function(eBZ)
+    local unUpdateBZBuffByCreate = AbilityManager:updataBZBuffByCreate(player, nil, function(eBZ)
         if AbilityManager:setCopyBuff('modifier_item_crimson_guard_buff', eBZ, eBZ) then
             setDebuff(eBZ)
         end
@@ -102,7 +102,7 @@ function Card_ITEM_crimson_guard:OnSpellStart()
             if IsValid(player.m_eHero) then
                 player.m_eHero:RemoveModifierByName("modifier_item_crimson_guard_buff")
             end
-            unUpdataBZBuffByCreate()
+            unUpdateBZBuffByCreate()
             return true
         end
     end)

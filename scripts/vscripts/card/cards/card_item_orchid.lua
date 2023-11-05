@@ -74,7 +74,7 @@ function Card_ITEM_orchid:OnSpellStart()
 
     ----兵卒创建更新buff
     if buff then
-        buff.unUpdataBZBuffByCreate = AbilityManager:updataBZBuffByCreate(playerTarget, nil, function(eBZ)
+        buff.unUpdateBZBuffByCreate = AbilityManager:updataBZBuffByCreate(playerTarget, nil, function(eBZ)
             AbilityManager:setCopyBuff('modifier_item_orchid_chenmo', eBZ, player.m_eHero)
         end)
     end
@@ -93,7 +93,7 @@ function Card_ITEM_orchid:OnSpellStart()
     --             if IsValid(playerTarget.m_eHero) then
     --                 playerTarget.m_eHero:RemoveModifierByNameAndCaster("modifier_item_orchid_chenmo", player.m_eHero)
     --             end
-    --             unUpdataBZBuffByCreate()
+    --             unUpdateBZBuffByCreate()
     --             return true
     --         end
     --         nDuration = nDuration - 1
@@ -126,8 +126,8 @@ function modifier_item_orchid_chenmo:OnCreated(kv)
     end
 end
 function modifier_item_orchid_chenmo:OnDestroy()
-    if self.unUpdataBZBuffByCreate then
-        self.unUpdataBZBuffByCreate()
+    if self.unUpdateBZBuffByCreate then
+        self.unUpdateBZBuffByCreate()
     end
 end
 function modifier_item_orchid_chenmo:DeclareFunctions()

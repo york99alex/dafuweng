@@ -47,8 +47,8 @@ function modifier_path_14_L1:OnDestroy()
             end
         end
     end
-    if self.unUpdataBZBuffByCreate then
-        self:unUpdataBZBuffByCreate()
+    if self.unUpdateBZBuffByCreate then
+        self:unUpdateBZBuffByCreate()
     end
     if self.tEventID then
         for _, nID in pairs(self.tEventID) do
@@ -91,7 +91,7 @@ function modifier_path_14_L1:OnCreated(kv)
                     eBZ:AddNewModifier(self.oPlayer.m_eHero, self:GetAbility(), self.sBuffName, {})
                 end
             end
-            self.unUpdataBZBuffByCreate = AbilityManager:updataBZBuffByCreate(self.oPlayer, self:GetAbility(), function(eBZ)
+            self.unUpdateBZBuffByCreate = AbilityManager:updataBZBuffByCreate(self.oPlayer, self:GetAbility(), function(eBZ)
                 if checkBZ(eBZ) and IsValid(self) then
                     eBZ:AddNewModifier(self.oPlayer.m_eHero, self:GetAbility(), self.sBuffName, {})
                 end

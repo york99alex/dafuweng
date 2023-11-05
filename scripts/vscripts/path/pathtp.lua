@@ -18,6 +18,7 @@ function PathTP:constructor(e)
 
     self.m_eCity = Entities:FindByName(nil, "city_" .. self.m_nID)
     self.m_eBanner = Entities:FindByName(nil, "banner_" .. self.m_nID)
+    print("self.m_eBanner.GetClassname()",self.m_eBanner:GetClassname())
     self:setBanner()
 
     self.m_nPrice = PATH_TO_PRICE[self.m_typePath]

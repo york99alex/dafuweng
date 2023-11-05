@@ -63,7 +63,7 @@ function Card_ITEM_black_king_bar:OnSpellStart()
         , v, v)
     end
     ----兵卒创建更新buff
-    local unUpdataBZBuffByCreate = AbilityManager:updataBZBuffByCreate(player, nil, function(eBZ)
+    local unUpdateBZBuffByCreate = AbilityManager:updataBZBuffByCreate(player, nil, function(eBZ)
         AbilityManager:setCopyBuff('modifier_item_black_king_bar_buff'
         , eBZ, eBZ)
     end)
@@ -80,7 +80,7 @@ function Card_ITEM_black_king_bar:OnSpellStart()
             if IsValid(player.m_eHero) then
                 player.m_eHero:RemoveModifierByName("modifier_item_black_king_bar_buff")
             end
-            unUpdataBZBuffByCreate()
+            unUpdateBZBuffByCreate()
             return true
         end
     end)
